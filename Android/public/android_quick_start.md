@@ -14,6 +14,16 @@ export WOVN_CLI_VERSION=latest # or specific version
 bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/Android/public/scripts/android_install_script.sh)
 ```
 
+Example:
+
+```bash
+export WOVN_PROJECT_TOKEN=WTOKEN
+export WOVN_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJwcm9qZWN0X3Rva2VuIjoiUjlFAKEvIiwidG9rZW5fdXVpZCI6IFAKETY3NTA1LWNjOWEtNDJiMS05N2YzLFAKEDA5YWIyYzJlZiJ9.BmeOFN78Qj-FAKETS16BVOFAKEwbqZgHZvYVxDjYriE
+export ANDROID_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/Android/examples/wovn-android-demoapp
+export WOVN_CLI_VERSION=latest
+bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/Android/public/scripts/android_install_script.sh)
+```
+
 ## Command breakdown
 
 The command above will execute the following steps:
