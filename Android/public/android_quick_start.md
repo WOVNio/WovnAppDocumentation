@@ -11,7 +11,7 @@ export WOVN_PROJECT_TOKEN=wovn_project_token
 export WOVN_API_KEY`=wovn_api_key
 export ANDROID_PROJECT_PATH=absolute_path_to_android_project
 export WOVN_CLI_VERSION=latest # or specific version
-bash <(curl -fsSL https://raw.githubusercontent.com/your-username/your-repository/main/android_install_script.sh) # The url not ready yet
+bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/Android/public/scripts/android_install_script.sh)
 ```
 
 ## Command breakdown
