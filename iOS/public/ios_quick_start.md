@@ -1,17 +1,17 @@
-# How to install and configure WOVN Android SDK
+# How to install and configure WOVN iOS SDK
 
-The WOVN Android SDK allows you to easily add multilingual support to your Android app. This guide explains how to install and configure the WOVN Android SDK in your Android project.
+The WOVN iOS SDK allows you to easily add multilingual support to your iOS app. This guide explains how to install and configure the WOVN iOS SDK in your iOS project.
 
 ## WOVN SDK installation with one command
 
-You can install the WOVN Android SDK with all the necessary configurations using the following command. Note that the command will make changes to your project, so make sure to commit your changes before running the command.
+You can install the WOVN iOS SDK with all the necessary configurations using the following command. Note that the command will make changes to your project, so make sure to commit your changes before running the command.
 
 ```bash
 export WOVN_PROJECT_TOKEN=wovn_project_token
 export WOVN_API_KEY=wovn_api_key
-export ANDROID_PROJECT_PATH=absolute_path_to_android_project
+export IOS_PROJECT_PATH=absolute_path_to_ios_project
 export WOVN_CLI_VERSION=latest # or specific version
-bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/Android/public/scripts/android_install_script.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/iOS/public/scripts/ios_install_script.sh)
 ```
 
 ## Command breakdown
@@ -37,8 +37,8 @@ Note that after this step, you don't need to provide the token and API key in th
 wovn_sdk config --token={WOVN_PROJECT_TOKEN} --api_key={WOVN_API_KEY}
 ```
 
-### Step 3: Using **wovn_sdk** to install WOVN Android SDK into your project
+### Step 3: Using **wovn_sdk** to install WOVN iOS SDK into your project
 
 ```bash
-wovn_sdk setup --platform=Android --project_path={absolute_path_to_android_project} --sdk_version=latest --with_kickstart --with_string_resources -y
+wovn_sdk setup --platform=iOS --project_path={absolute_path_to_ios_project} --sdk_version=latest --with_kickstart --with_string_resources -y
 ```
