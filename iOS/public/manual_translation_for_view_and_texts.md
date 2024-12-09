@@ -1,10 +1,10 @@
 # Translate Text feature
 
-Most of the time, WOVN SDK will find and translate all Views automatically. However, there are cases where WOVN SDK may not be able to detect the text to translate. In such cases, you can use `Wovn.translate(View, String)` to translate Views, or `Wovn.translate(String, String)` to translate text directly.
+Most of the time, WOVN SDK will find and translate all Views automatically. However, there are cases where WOVN SDK may not be able to detect the text to translate. In such cases, you can use `Wovn.translateView(View, String)` to translate Views, or `Wovn.translate(String, String)` to translate text directly.
 
 ## Translate Views
 
-To translate a View, use the `Wovn.translate(ViewToTranslate_View, ScreenName_String)` method. This method translates the text of the specified View and updates the View with the translated text. Note that after calling this method, WOVN SDK will follow `ViewToTranslate_View` and automatically translate it if something changes.
+To translate a View, use the `Wovn.translateView(ViewToTranslate_View, ScreenName_String)` method. This method translates the text of the specified View and updates the View with the translated text. Note that after calling this method, WOVN SDK will follow `ViewToTranslate_View` and automatically translate it if something changes.
 
 ### Example
 
