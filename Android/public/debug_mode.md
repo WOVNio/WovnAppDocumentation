@@ -30,7 +30,7 @@ To activate Debug Mode through code, use the following function:
 public WovnActivityLifecycleCallbacks(boolean isDebugMode)
 ```
 
-Pass `true` to `isDebugMode` to enable `Debug Mode` and enter `App Operator Mode`. A common use case is enabling `Debug Mode` in debug builds only, using BuildConfig.DEBUG.
+Pass `true` to `isDebugMode` to enable `Debug Mode` and enter `App Operator Mode`. A common use case is enabling `Debug Mode` in debug builds only, using `BuildConfig.DEBUG`.
 
 Example in Kotlin:
 
@@ -38,7 +38,7 @@ Example in Kotlin:
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        this.registerActivityLifecycleCallbacks(WovnActivityLifecycleCallbacks(BuildConfig.DEBUG)) // Enable Debug Mode
+        this.registerActivityLifecycleCallbacks(WovnActivityLifecycleCallbacks(BuildConfig.DEBUG)) // Enable Debug Mode based on BuildConfig.DEBUG
     }
 }
 ```
