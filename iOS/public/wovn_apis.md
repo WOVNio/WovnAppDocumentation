@@ -8,10 +8,10 @@
 4. [changeLang](#changelanglang-string-callback-string---void--nil)
 5. [translate (Text)](#translatesrc-string-screenname-string---string)
 6. [getWovnStatus](#getwovnstatus---wovnstatus)
-7. [translateView (UIView)](#translateviewview-uiview-screenname-string-translationtype-translationtype-completionhandler-escaping---void)
-8. [translateView (UIView and UIViewController)](#translateviewview-uiview-viewcontroller-uiviewcontroller-translationtype-translationtype--translateview-completionhandler-escaping---void)
-9. [translate (UINavigationItem)](#translatenavigationitem-navigationitem-screenname-string--nil-translationtype-translationtype--translateview-completionhandler-escaping---void--)
-10. [translate (UINavigationItem and UIViewController)](#translatenavigationitem-navigationitem-viewcontroller-uiviewcontroller-translationtype-translationtype--translateview-completionhandler-escaping---void--)
+7. [translateView (UIView)](#translateviewview-uiview-screenname-string--nil-translationtype-translationtype--translateview-completionhandler-escaping----void--)
+8. [translateView (UIView and UIViewController)](#translateviewview-uiview-viewcontroller-uiviewcontroller-translationtype-translationtype--translateview-completionhandler-escaping----void--)
+9. [translate (UINavigationItem)](#translatenavigationitem-uinavigationitem-screenname-string--nil-translationtype-translationtype--translateview-completionhandler-escaping----void--)
+10. [translate (UINavigationItem and UIViewController)](#translatenavigationitem-uinavigationitem-viewcontroller-uiviewcontroller-translationtype-translationtype--translateview-completionhandler-escaping----void--)
 11. [start](#startappgroupidentifier-string--nil-isdebugmode-bool--false-autotranslateuikit-bool--true-isnotificationserviceenv-bool--false)
 12. [setUserPermission](#setuserpermissionpermission-wovnpermission-enabled-bool)
 13. [hasPermission](#haspermissionpermission-wovnpermission---bool)
@@ -173,7 +173,7 @@ Similar to the previous method, but infers the screen name from the `UIViewContr
 - `navigationItem`: The navigation item to translate.
 - `viewController`: The controller providing the screen name.
 - `translationType`: The type of translation.
-- `completionHandler`: Completion closure.
+- `completionHandler`: Completion closure. (to be deprecated)
 
 **Example:**
 
