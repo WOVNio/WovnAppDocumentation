@@ -14,8 +14,8 @@ The `wovn_sdk` CLI simplifies setting up and managing WOVN SDK integrations for 
 2. **Installation**: You can download and install the `wovn_sdk` CLI by running:
 
     ```bash
-    gem uninstall wovn_sdk --all --executables --ignore-dependencies
-    curl -fSL -o wovn_sdk.gem "https://download.wovn.app/cli/latest/wovn_sdk.gem" # You can replace 'latest' with a specific version.
+    gem uninstall wovn_sdk --all --executables --ignore-dependencies # First, uninstall any existing versions
+    curl -fSL -o wovn_sdk.gem "https://download.wovn.app/cli/latest/wovn_sdk.gem" # This will download the latest version, replace `latest` with a specific version if needed
     gem install ./wovn_sdk.gem
     rm wovn_sdk.gem
     wovn_sdk help
