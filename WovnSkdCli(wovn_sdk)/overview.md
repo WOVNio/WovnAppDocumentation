@@ -11,15 +11,19 @@ The `wovn_sdk` CLI simplifies setting up and managing WOVN SDK integrations for 
 1. **Prerequisites**:
    - Ensure Ruby and Bundler are installed on your machine.
 
-2. **Installation**: You can download and install the `wovn_sdk` CLI by running:
+2. **Installation**: You can download and install the latest `wovn_sdk` CLI by running:
 
     ```bash
-    gem uninstall wovn_sdk --all --executables --ignore-dependencies # First, uninstall any existing versions
-    curl -fSL -o wovn_sdk.gem "https://download.wovn.app/cli/latest/wovn_sdk.gem" # This will download the latest version, replace `latest` with a specific version if needed
+    gem uninstall wovn_sdk --all --executables --ignore-dependencies 
+    curl -fSL -o wovn_sdk.gem "https://download.wovn.app/cli/latest/wovn_sdk.gem"
     gem install ./wovn_sdk.gem
     rm wovn_sdk.gem
     wovn_sdk help
     ```
+
+    Note:
+    - `gem uninstall wovn_sdk --all --executables --ignore-dependencies` is to make sure the previous version is uninstalled.
+    - `curl -fSL -o wovn_sdk.gem "https://download.wovn.app/cli/latest/wovn_sdk.gem"` downloads the latest version of the CLI. You can replace `latest` with a specific version if needed (e.g., `0.2.0`, `latest_release_candidate`, etc).
 
 3. **Configuration**: Before using the CLI, you need to configure it with your WOVN project token and API key. Run the following command to set up your credentials:
 
