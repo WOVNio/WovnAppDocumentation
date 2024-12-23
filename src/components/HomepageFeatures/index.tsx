@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Start using WOVN.app on iOS with our quick start guide. <br />
-        <a href="/docs/iOS/ios_quick_start">iOS Quick Start</a>
+        <a href="docs/iOS/ios_quick_start">iOS Quick Start</a>
       </>
     ),
   },
@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Start using WOVN.app on Android with our quick start guide. <br />
-        <a href="/docs/Android/android_quick_start">Android Quick Start</a>
+        <a href="docs/Android/android_quick_start">Android Quick Start</a>
       </>
     ),
   },
