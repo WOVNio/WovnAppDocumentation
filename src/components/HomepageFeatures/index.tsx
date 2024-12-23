@@ -15,10 +15,10 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Start using WOVN.app on iOS with our quick start guide. <br />
-        <a href="docs/iOS/ios_quick_start">iOS Quick Start</a>
+        <a href="docs/English/iOS/ios_quick_start">iOS Quick Start</a>
         <hr />
         iOSでWOVN.appを始めるには、こちらのクイックスタートガイドをご利用ください。<br />
-        <a href="docs/iOS/ios_quick_start">iOS クイックスタート</a>
+        <a href="docs/Japanese/iOS/ios_quick_start">iOS クイックスタート</a>
       </>
     ),
   },
@@ -28,10 +28,10 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Start using WOVN.app on Android with our quick start guide. <br />
-        <a href="docs/Android/android_quick_start">Android Quick Start</a>
+        <a href="docs/English/Android/android_quick_start">Android Quick Start</a>
         <hr />
         AndroidでWOVN.appを始めるには、こちらのクイックスタートガイドをご利用ください。<br />
-        <a href="docs/Android/android_quick_start">Android クイックスタート</a>
+        <a href="docs/Japanese/Android/android_quick_start">Android クイックスタート</a>
       </>
     ),
   },
