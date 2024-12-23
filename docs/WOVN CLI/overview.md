@@ -224,7 +224,7 @@ wovn_sdk help setup
 
 1. **Install wovn_sdk and setup WOVN SDK into iOS and Android project using scripts**
 
-    - **Android** (Refer to the [Android Quick Start Guide](./../Android/public/android_quick_start.md) for more details)
+    - **Android** (Refer to the [Android Quick Start Guide](./../Android/android_quick_start.md) for more details)
 
     ```bash
     export WOVN_PROJECT_TOKEN=wovn_project_token
@@ -244,7 +244,7 @@ wovn_sdk help setup
     bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/Android/public/scripts/android_install_script.sh)
     ```
 
-    - **iOS** (Refer to the [iOS Quick Start Guide](./../iOS/public/ios_quick_start.md) for more details)
+    - **iOS** (Refer to the [iOS Quick Start Guide](./../iOS/ios_quick_start.md) for more details)
 
     ```bash
     export WOVN_PROJECT_TOKEN=wovn_project_token
