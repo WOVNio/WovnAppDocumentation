@@ -5,6 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
+  plugins: [require.resolve('docusaurus-lunr-search')],
   title: 'WOVN.app',
   tagline: '',
   favicon: 'img/logo.png',
