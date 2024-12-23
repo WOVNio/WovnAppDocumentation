@@ -30,11 +30,11 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'React Native & Expo',
     Svg: require('@site/static/img/react_native.svg').default,
     description: (
       <>
-        Documentation for React Native will be available soon. <br />
+        Documentation for React Native & Expo will be available soon. <br />
       </>
     ),
   },

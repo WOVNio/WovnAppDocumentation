@@ -91,18 +91,18 @@ const config: Config = {
           title: 'English Docs',
           items: [
             {
-              label: 'iOS',
+              label: 'iOS Quick Start',
               to: '/docs/iOS/ios_quick_start',
+            },
+            {
+              label: 'Android Quick Start',
+              to: '/docs/Android/android_quick_start',
             },
           ],
         },
         {
           title: '日本語のドキュメント [WIP]',
           items: [
-            {
-              label: 'iOS',
-              to: '/docs/iOS/ios_quick_start',
-            },
           ],
         },
         {
