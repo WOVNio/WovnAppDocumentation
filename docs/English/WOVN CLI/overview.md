@@ -231,7 +231,7 @@ wovn_sdk help setup
     export WOVN_API_KEY=wovn_api_key
     export ANDROID_PROJECT_PATH=absolute_path_to_android_project
     export WOVN_CLI_VERSION=latest # or specific version
-    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/Android/scripts/android_install_script.sh)
+    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/Android/scripts/android_install_script.sh)
     ```
 
     Example:
@@ -241,7 +241,7 @@ wovn_sdk help setup
     export WOVN_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJwcm9qZWN0X3Rva2VuIjoiUjlFAKEvIiwidG9rZW5fdXVpZCI6IFAKETY3NTA1LWNjOWEtNDJiMS05N2YzLFAKEDA5YWIyYzJlZiJ9.BmeOFN78Qj-FAKETS16BVOFAKEwbqZgHZvYVxDjYriE
     export ANDROID_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/Android/examples/wovn-android-demoapp
     export WOVN_CLI_VERSION=latest
-    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/Android/scripts/android_install_script.sh)
+    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/Android/scripts/android_install_script.sh)
     ```
 
     - **iOS** (Refer to the [iOS Quick Start Guide](./../iOS/ios_quick_start.md) for more details)
@@ -252,7 +252,7 @@ wovn_sdk help setup
     export IOS_PROJECT_PATH=absolute_path_to_ios_project
     export IOS_PROJECT_TARGETS=ios_project_target1,ios_project_target2 # Optional, default is the same as project name
     export WOVN_CLI_VERSION=latest # or specific version
-    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/iOS/scripts/ios_install_script.sh)
+    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
     ```
 
     Example:
@@ -263,7 +263,7 @@ wovn_sdk help setup
     export IOS_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/iOS/examples/wovn-ios-demoapp/wovn-ios-demoapp.xcodeproj
     export IOS_PROJECT_TARGETS=wovn-ios-demoapp,wovn-ios-demoappTests
     export WOVN_CLI_VERSION=latest
-    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/iOS/scripts/ios_install_script.sh)
+    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
     ```
 
     ```bash
@@ -271,5 +271,5 @@ wovn_sdk help setup
     export WOVN_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJwcm9qZWN0X3Rva2VuIjoiUjlFAKEvIiwidG9rZW5fdXVpZCI6IFAKETY3NTA1LWNjOWEtNDJiMS05N2YzLFAKEDA5YWIyYzJlZiJ9.BmeOFN78Qj-FAKETS16BVOFAKEwbqZgHZvYVxDjYriE
     export IOS_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/iOS/examples/wovn-ios-demoapp/wovn-ios-demoapp.xcodeproj
     export WOVN_CLI_VERSION=latest
-    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/iOS/scripts/ios_install_script.sh)
+    bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
     ```
