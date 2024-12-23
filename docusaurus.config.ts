@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'WOVN.app',
-  tagline: 'Wovn.app Documentation',
+  tagline: '',
   favicon: 'img/logo.png',
 
   // Set the production url of your site here
@@ -73,9 +73,15 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'englishDocsSidebar',
           position: 'left',
-          label: 'Documentation',
+          label: 'Documentation(English)',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'japaneseDocsSidebar',
+          position: 'left',
+          label: 'ドキュメント(日本語)',
         },
         {
           href: 'https://github.com/WOVNio/WovnAppDocumentation',
@@ -88,21 +94,29 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'English Docs',
+          title: 'Quick Start',
           items: [
             {
               label: 'iOS Quick Start',
-              to: '/docs/iOS/ios_quick_start',
+              to: '/docs/English/iOS/ios_quick_start',
             },
             {
               label: 'Android Quick Start',
-              to: '/docs/Android/android_quick_start',
+              to: '/docs/English/Android/android_quick_start',
             },
           ],
         },
         {
-          title: '日本語のドキュメント [WIP]',
+          title: 'クイックスタート',
           items: [
+            {
+              label: 'iOS クイックスタート',
+              to: '/docs/Japanese/iOS/ios_quick_start',
+            },
+            {
+              label: 'Android クイックスタート',
+              to: '/docs/Japanese/Android/android_quick_start',
+            },
           ],
         },
         {

@@ -16,6 +16,9 @@ const FeatureList: FeatureItem[] = [
       <>
         Start using WOVN.app on iOS with our quick start guide. <br />
         <a href="docs/iOS/ios_quick_start">iOS Quick Start</a>
+        <hr />
+        iOSでWOVN.appを始めるには、こちらのクイックスタートガイドをご利用ください。<br />
+        <a href="docs/iOS/ios_quick_start">iOS クイックスタート</a>
       </>
     ),
   },
@@ -26,6 +29,9 @@ const FeatureList: FeatureItem[] = [
       <>
         Start using WOVN.app on Android with our quick start guide. <br />
         <a href="docs/Android/android_quick_start">Android Quick Start</a>
+        <hr />
+        AndroidでWOVN.appを始めるには、こちらのクイックスタートガイドをご利用ください。<br />
+        <a href="docs/Android/android_quick_start">Android クイックスタート</a>
       </>
     ),
   },
@@ -34,7 +40,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/react_native.svg').default,
     description: (
       <>
-        Documentation for React Native & Expo will be available soon. <br />
+        Documentation for React Native & Expo will be available soon.
+        <hr />
+        React Native & Expoのドキュメントは近日公開予定です。
       </>
     ),
   },
