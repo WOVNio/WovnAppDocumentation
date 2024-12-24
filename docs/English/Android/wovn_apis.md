@@ -143,9 +143,9 @@ Wovn.translateAlert(dialog);
 dialog.show();
 ```
 
-### Generic Translation Methods
+## Generic Translation Methods
 
-## `translate(View view, Activity activity)`
+### `translate(View view, Activity activity)`
 
 Translates the given View using the provided Activity to determine the screen name. Note that WOVN SDK will follow this View and automatically translate it when changes occurs like new child views added, or text changes.
 
@@ -160,7 +160,7 @@ Example:
 Wovn.translate(myView, myActivity);
 ```
 
-## `translate(View view, String screenName)`
+### `translate(View view, String screenName)`
 
 Same as above, but with a specified screen name.
 

@@ -143,9 +143,9 @@ Wovn.translateAlert(dialog);
 dialog.show();
 ```
 
-### 汎用翻訳メソッド
+## 汎用翻訳メソッド
 
-## `translate(View view, Activity activity)`
+### `translate(View view, Activity activity)`
 
 提供されたアクティビティを使用して画面名を決定し、指定された View を翻訳します。WOVN SDK はこの View を追跡し、新しい子ビューの追加やテキストの変更などの変更が発生した際に自動的に翻訳します。
 
@@ -160,7 +160,7 @@ dialog.show();
 Wovn.translate(myView, myActivity);
 ```
 
-## `translate(View view, String screenName)`
+### `translate(View view, String screenName)`
 
 上記と同様ですが、指定された画面名を使用します。
 
