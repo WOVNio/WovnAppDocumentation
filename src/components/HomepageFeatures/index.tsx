@@ -46,6 +46,29 @@ const FeatureList: FeatureItem[] = [
       </>
     ),
   },
+  {
+    title: 'Flutter',
+    Svg: require('@site/static/img/flutter.svg').default,
+    description: (
+      <>
+        Documentation for Flutter will be available soon.
+        <hr />
+        Flutterのドキュメントは近日公開予定です。
+      </>
+    ),
+  },
+  {
+    title: 'Xamarin',
+    Svg: require('@site/static/img/xamarin.svg').default,
+    description: (
+      <>
+        Documentation for Xamarin will be available soon.
+        <hr />
+        Xamarinのドキュメントは近日公開予定です。
+      </>
+    ),
+  }
+
 ];
 
 function Feature({title, Svg, description}: FeatureItem) {

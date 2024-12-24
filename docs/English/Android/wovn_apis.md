@@ -1,46 +1,5 @@
 # Wovn SDK for Android - Public API Reference
 
-## Table of Contents
-
-1. [Initialization](#initialization)  
-   1.1. [`start(Context context, boolean isDebugMode)`](#startcontext-context-boolean-isdebugmode)  
-   1.2. [`start(boolean isDebugMode)`](#startboolean-isdebugmode)
-
-2. [View Translation](#view-translation)  
-   2.1. [`translateView(View view, String screen, WovnTranslateViewFunction callback)` (Will be deprecated)](#translateviewview-view-string-screen-wovntranslateviewfunction-callback-will-be-deprecated)  
-   2.2. [`translateView(View view, String screen)`](#translateviewview-view-string-screen)  
-   2.3. [`translateView(View view)`](#translateviewview-view)  
-   2.4. [`translateView(View view, Activity activity, WovnTranslateViewFunction callback)` (Will be deprecated)](#translateviewview-view-activity-activity-wovntranslateviewfunction-callback-will-be-deprecated)  
-   2.5. [`translateView(View view, Activity activity)`](#translateviewview-view-activity-activity)
-
-3. [Alert Translation](#alert-translation)  
-   3.1. [`translateAlert(AlertDialog alertDialog)`](#translatealertalertdialog-alertdialog)
-
-4. [Generic Translation Methods](#generic-translation-methods)  
-   4.1. [`translate(View view, Activity activity)`](#translateview-view-activity-activity)  
-   4.2. [`translate(View view, String screenName)`](#translateview-view-string-screenname)
-
-5. [Language Management](#language-management)  
-   5.1. [`getCurrentLangCode()`](#getcurrentlangcode)  
-   5.2. [`changeLang(String lang)`](#changelangstring-lang)  
-   5.3. [`changeLang(String lang, WovnLangChangeCallback callback)` (Will be deprecated)](#changelangstring-lang-wovnlangchangecallback-callback-will-be-deprecated)  
-   5.4. [`changeToSystemLang()`](#changetosystemlang)  
-   5.5. [`changeToSystemLang(WovnLangChangeCallback callback)` (Will be deprecated)](#changetosystemlangwovnlangchangecallback-callback-will-be-deprecated)
-
-6. [Text Translation](#text-translation)  
-   6.1. [`translate(String src, String screenName)`](#translatestring-src-string-screenname)  
-   6.2. [`translate(String src, String screenName, int timeoutMilliSec)`](#translatestring-src-string-screenname-int-timeoutmillisec)
-
-7. [Status and Configuration](#status-and-configuration)  
-   7.1. [`getWovnStatus()`](#getwovnstatus)  
-   7.2. [`setWovnIgnore(View view, boolean ignore)`](#setwovnignoreview-view-boolean-ignore)  
-   7.3. [`getWovnIgnore(View view)`](#getwovnignoreview-view)  
-   7.4. [`setUserPermission(WovnPermission permission, boolean enable)`](#setuserpermissionwovnpermission-permission-boolean-enable)
-
-8. [Notification Translation](#notification-translation)  
-   8.1. [`translateNotificationData(String src)`](#translatenotificationdatastring-src)  
-   8.2. [`translateFirebaseNotificationIntent(Intent firebaseNotiIntent)`](#translatefirebasenotificationintentintent-firebasenotiintent)
-
 This document provides an overview of the public, non-deprecated methods available in the `Wovn` class, along with usage examples. These methods allow you to integrate and control WOVN.io translation features in your Android application.
 
 ## Initialization
