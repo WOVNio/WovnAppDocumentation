@@ -44,7 +44,7 @@ initWovn(token: string, opts?: WovnInitOptions): Promise<void>
 *基本的な使用例:*
 
 ```typescript
-await initWovn('your-token', { __overrideInstance: true });
+await initWovn('your-token')
 ```
 
 *React Nativeでの統合例:*
