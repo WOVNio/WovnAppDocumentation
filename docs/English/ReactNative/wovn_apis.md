@@ -59,7 +59,7 @@ import { Text, ActivityIndicator, View, StyleSheet } from 'react-native';
 
 async function initializeApp() {
   try {
-    await Wovn.initWovn('EAuabD', {
+    await Wovn.initWovn('TOKEN3', {
       enabledDebugLog: true,
       logLevel: 0,
     });
@@ -334,15 +334,5 @@ getWovnStatus(): string
 
 ```typescript
 const status = getWovnStatus();
-console.log(status); // 'Configs[token: EAuabD]'
+console.log(status); // 'Configs[token: TOKEN3]'
 ```
-
----
-
-## Notes
-
-- **Instance Management**: The Wovn SDK uses a singleton pattern. Ensure that `initWovn` is called before any other exported functions to properly initialize the instance. Attempting to use other functions before initialization will result in warnings and default behaviors.
-- **Error Handling**: The SDK logs warnings if functions are called before initialization. It's recommended to handle initialization asynchronously and ensure completion before interacting with other SDK functionalities.
-- **Customization**: The `initWovn` function accepts an options object allowing you to customize logging, translation preview modes, and debug settings to suit your development and production environments.
-
-For further assistance or advanced configurations, please refer to the [Wovn SDK GitHub Repository](https://github.com/wovnio/react-native-sdk) or contact our support team.

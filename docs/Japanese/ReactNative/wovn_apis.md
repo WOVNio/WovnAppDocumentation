@@ -1,53 +1,53 @@
-# Wovn SDK Documentation
+# Wovn SDK ドキュメント (自動翻訳)
 
-## Initialization
+## 初期化
 
 ### `initWovn`
 
-**Description**
+**説明**
 
-Initializes the Wovn SDK with the provided token and configuration options. This setup is essential before invoking any other Wovn SDK methods. The initialization process involves fetching necessary data from the API or local storage, ensuring that the SDK is ready for use.
+指定されたトークンと設定オプションを使用してWovn SDKを初期化します。このセットアップは、他のWovn SDKメソッドを呼び出す前に必須です。初期化プロセスでは、必要なデータをAPIまたはローカルストレージから取得し、SDKが使用可能な状態にします。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 initWovn(token: string, opts?: WovnInitOptions): Promise<void>
 ```
 
-**Parameters**
+**パラメータ**
 
-- `token` (`string`): The authentication token required for loading data.
-- `opts` (`WovnInitOptions`, optional): Configuration options for initialization.
-  - `enabledDebugLog` (`boolean`): Enables debug logging.
-  - `logLevel` (`number | LogLevel`): The log level to use for logging.
+- `token` (`string`): データのロードに必要な認証トークン。
+- `opts` (`WovnInitOptions`, 任意): 初期化の設定オプション。
+  - `enabledDebugLog` (`boolean`): デバッグログを有効にします。
+  - `logLevel` (`number | LogLevel`): ログの出力レベル。
     - `0` = VERBOSE
     - `1` = DEBUG
     - `2` = INFO
     - `3` = WARN
     - `4` = ERROR
     - `5` = NONE
-  - `enableTranslationPreviewMode` (`boolean`): Enables translation preview mode when app operator mode is active.
-  - `debugMode` (`boolean`): Enables debug mode, which also activates app operator mode. Debug mode is enabled by default in the development environment (`__DEV__ === true`).
+  - `enableTranslationPreviewMode` (`boolean`): アプリ運用者モードが有効な場合に翻訳プレビューモードを有効にします。
+  - `debugMode` (`boolean`): デバッグモードを有効にします。このモードは開発環境（`__DEV__ === true`）ではデフォルトで有効です。
 
-**Returns**
+**戻り値**
 
-- `Promise<void>`: A promise that resolves once initialization is complete.
+- `Promise<void>`: 初期化が完了した後に解決されるプロミス。
 
-**Remarks**
+**備考**
 
-- This method should be called before invoking any other Wovn SDK methods; using `await` is recommended.
-- The first invocation fetches data from the API, which may take time. Subsequent calls load data from local storage, ensuring near-instant initialization.
-- To speed up the initial load, a kickstart feature will be added in future releases.
+- このメソッドは他のWovn SDKメソッドを呼び出す前に実行する必要があります。`await`を使用することを推奨します。
+- 最初の呼び出しではAPIからデータを取得するため時間がかかる可能性があります。2回目以降の呼び出しではローカルストレージからデータをロードし、ほぼ即座に初期化が完了します。
+- 初回ロードを高速化する「キックスタート機能」は将来のリリースで追加予定です。
 
-**Examples**
+**例**
 
-*Basic usage:*
+*基本的な使用例:*
 
 ```typescript
 await initWovn('your-token', { __overrideInstance: true });
 ```
 
-*React Native integration:*
+*React Nativeでの統合例:*
 
 ```javascript
 import React, { useState, useEffect } from 'react';
@@ -59,12 +59,12 @@ import { Text, ActivityIndicator, View, StyleSheet } from 'react-native';
 
 async function initializeApp() {
   try {
-    await Wovn.initWovn('EAuabD', {
+    await Wovn.initWovn('TOKEN3', {
       enabledDebugLog: true,
       logLevel: 0,
     });
   } catch (error) {
-    console.error('Initialization failed:', error);
+    console.error('初期化失敗:', error);
   }
 }
 
@@ -79,12 +79,12 @@ function App() {
     init();
   }, []);
 
-  // Ensure the app is not rendered until WOVN initialization is complete
+  // Wovnの初期化が完了するまでアプリをレンダリングしない
   if (!isInitialized) {
     return (
       <View style={styles.centeredView}>
         <ActivityIndicator size="large" color="#0000ff" />
-        <Text>LOADING...</Text>
+        <Text>読み込み中...</Text>
       </View>
     );
   }
@@ -105,25 +105,25 @@ registerRootComponent(App);
 
 ---
 
-## Language Management
+## 言語管理
 
 ### `changeLang`
 
-**Description**
+**説明**
 
-Changes the current language to the specified language code.
+指定された言語コードに現在の言語を変更します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 changeLang(langCode: string): void
 ```
 
-**Parameters**
+**パラメータ**
 
-- `langCode` (`string`): The language code to switch to (e.g., `'en'`, `'fr'`, `'es'`).
+- `langCode` (`string`): 切り替える言語コード（例: `'en'`, `'fr'`, `'es'`）。
 
-**Examples**
+**例**
 
 ```typescript
 changeLang('fr');
@@ -133,17 +133,17 @@ changeLang('fr');
 
 ### `changeToSystemLang`
 
-**Description**
+**説明**
 
-Changes the current language to the system's default language.
+現在の言語をシステムのデフォルト言語に変更します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 changeToSystemLang(): void
 ```
 
-**Examples**
+**例**
 
 ```typescript
 changeToSystemLang();
@@ -153,21 +153,21 @@ changeToSystemLang();
 
 ### `getLanguagesList`
 
-**Description**
+**説明**
 
-Retrieves the list of supported language codes.
+サポートされている言語コードのリストを取得します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 getLanguagesList(): string[]
 ```
 
-**Returns**
+**戻り値**
 
-- `string[]`: An array of supported language codes.
+- `string[]`: サポートされている言語コードの配列。
 
-**Examples**
+**例**
 
 ```typescript
 const languages = getLanguagesList();
@@ -178,21 +178,21 @@ console.log(languages); // ['en', 'fr', 'es', ...]
 
 ### `getCurrentLang`
 
-**Description**
+**説明**
 
-Gets the currently active language code.
+現在アクティブな言語コードを取得します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 getCurrentLang(): string
 ```
 
-**Returns**
+**戻り値**
 
-- `string`: The current language code (e.g., `'en'`, `'fr'`).
+- `string`: 現在の言語コード（例: `'en'`, `'fr'`）。
 
-**Examples**
+**例**
 
 ```typescript
 const currentLang = getCurrentLang();
@@ -203,21 +203,21 @@ console.log(currentLang); // 'en'
 
 ### `getSystemLang`
 
-**Description**
+**説明**
 
-Retrieves the system's default language code.
+システムのデフォルト言語コードを取得します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 getSystemLang(): string
 ```
 
-**Returns**
+**戻り値**
 
-- `string`: The system language code (e.g., `'en-US'`, `'fr-FR'`).
+- `string`: システムの言語コード（例: `'en-US'`, `'fr-FR'`）。
 
-**Examples**
+**例**
 
 ```typescript
 const systemLang = getSystemLang();
@@ -226,60 +226,60 @@ console.log(systemLang); // 'en-US'
 
 ---
 
-## Translation
+## 翻訳
 
 ### `translateText`
 
-**Description**
+**説明**
 
-Translates a given text based on the current language settings.
+現在の言語設定に基づいて指定されたテキストを翻訳します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 translateText(text: string, screenName?: string): string
 ```
 
-**Parameters**
+**パラメータ**
 
-- `text` (`string`): The text to be translated.
-- `screenName` (`string`, optional): The identifier for the screen or context where the translation is applied. Defaults to `'_Default'`.
+- `text` (`string`): 翻訳対象のテキスト。
+- `screenName` (`string`, 任意): 翻訳を適用する画面またはコンテキストの識別子。デフォルトは`'_Default'`。
 
-**Returns**
+**戻り値**
 
-- `string`: The translated text. If translation is not available, returns the original text.
+- `string`: 翻訳されたテキスト。翻訳が利用できない場合は元のテキストを返します。
 
-**Examples**
+**例**
 
 ```typescript
 const translated = translateText('Hello, world!');
-console.log(translated); // 'Bonjour le monde!' if the current language is French
+console.log(translated); // 現在の言語がフランス語の場合 'Bonjour le monde!'
 ```
 
 ---
 
 ### `translate`
 
-**Description**
+**説明**
 
-Translates a React node based on the current language settings.
+現在の言語設定に基づいてReactノードを翻訳します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 translate(node: React.ReactNode, screenName?: string): React.ReactNode
 ```
 
-**Parameters**
+**パラメータ**
 
-- `node` (`React.ReactNode`): The React node to be translated.
-- `screenName` (`string`, optional): The identifier for the screen or context where the translation is applied. Defaults to `'_Default'`.
+- `node` (`React.ReactNode`): 翻訳対象のReactノード。
+- `screenName` (`string`, 任意): 翻訳を適用する画面またはコンテキストの識別子。デフォルトは`'_Default'`。
 
-**Returns**
+**戻り値**
 
-- `React.ReactNode`: The translated React node. If translation is not available, returns the original node.
+- `React.ReactNode`: 翻訳されたReactノード。翻訳が利用できない場合は元のノードを返します。
 
-**Examples**
+**例**
 
 ```typescript
 const translatedNode = translate(<div>Hello, world!</div>, 'HomeScreen');
@@ -287,25 +287,25 @@ const translatedNode = translate(<div>Hello, world!</div>, 'HomeScreen');
 
 ---
 
-## Utility Functions
+## ユーティリティ関数
 
 ### `getToken`
 
-**Description**
+**説明**
 
-Retrieves the current project token used by the Wovn SDK.
+Wovn SDKで使用されている現在のプロジェクトトークンを取得します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 getToken(): string
 ```
 
-**Returns**
+**戻り値**
 
-- `string`: The current Wovn project token.
+- `string`: 現在のWovnプロジェクトトークン。
 
-**Examples**
+**例**
 
 ```typescript
 const token = getToken();
@@ -316,33 +316,23 @@ console.log(token); // 'FToken'
 
 ### `getWovnStatus`
 
-**Description**
+**説明**
 
-Retrieves the current status of the Wovn SDK.
+Wovn SDKの現在のステータスを取得します。
 
-**Signature**
+**シグネチャ**
 
 ```typescript
 getWovnStatus(): string
 ```
 
-**Returns**
+**戻り値**
 
-- `string`: A string representation of the Wovn SDK's current status.
+- `string`: Wovn SDKの現在のステータスを表す文字列。
 
-**Examples**
+**例**
 
 ```typescript
 const status = getWovnStatus();
-console.log(status); // 'Configs[token: EAuabD]'
+console.log(status); // 'Configs[token: TOKEN3]'
 ```
-
----
-
-## Notes
-
-- **Instance Management**: The Wovn SDK uses a singleton pattern. Ensure that `initWovn` is called before any other exported functions to properly initialize the instance. Attempting to use other functions before initialization will result in warnings and default behaviors.
-- **Error Handling**: The SDK logs warnings if functions are called before initialization. It's recommended to handle initialization asynchronously and ensure completion before interacting with other SDK functionalities.
-- **Customization**: The `initWovn` function accepts an options object allowing you to customize logging, translation preview modes, and debug settings to suit your development and production environments.
-
-For further assistance or advanced configurations, please refer to the [Wovn SDK GitHub Repository](https://github.com/wovnio/react-native-sdk) or contact our support team.

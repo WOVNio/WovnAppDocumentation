@@ -1,87 +1,87 @@
-# Migration From v1 to v2 Wovn React Native SDK
+# v1からv2へのWovn React Native SDKの移行 (自動翻訳)
 
-## Migration Guide
+## 移行ガイド
 
-In the v2 SDK, we have made changes to simplify the SDK while significantly improving performance and stability. Follow these steps to migrate from v1 to v2.
+v2 SDKでは、SDKの簡素化を図ると同時に、パフォーマンスと安定性を大幅に向上させました。以下のステップに従って、v1からv2への移行を行ってください。
 
-### 1. Merge `@wovnio/react-native-sdk-core` and `@wovnio/support-react-native` into `@wovnio/react-native`
+### 1. `@wovnio/react-native-sdk-core`と`@wovnio/support-react-native`を`@wovnio/react-native`に統合
 
-To import Wovn's components and functions, use the following code:
+Wovnのコンポーネントや関数をインポートするには、以下のコードを使用します。
 
 ```javascript
-// Import Wovn's components and functions
+// Wovnのコンポーネントと関数をインポート
 import { Screen, Text, TextInput } from '@wovnio/react-native';
 import * as Wovn from '@wovnio/react-native';
 
-// To use Wovn's components and functions in your code
-// Example usage of Wovn's functions
+// Wovnのコンポーネントと関数をコードで使用する例
+// Wovnの関数の使用例
 Wovn.changeLang('en-US');
 let translatedText = Wovn.translate('こんにちは、世界！');
 
-// Example usage of Wovn's components
+// Wovnのコンポーネントの使用例
 <Text>こんにちは、世界！</Text>
 ```
 
-### 2. Remove `WovnContainer`
+### 2. `WovnContainer`の削除
 
-You no longer need to wrap your app inside `WovnContainer`.
+アプリを`WovnContainer`でラップする必要がなくなりました。
 
-### 3. Initialize Wovn
+### 3. Wovnの初期化
 
-Use the following example to initialize Wovn. Note that `Wovn.initWovn` must be completed before using other Wovn functions. For more details, refer to [Wovn APIs](./wovn_apis.md#initWovn).
+Wovnを初期化するには、以下の例を参考にしてください。`Wovn.initWovn`は他のWovn関数を使用する前に完了している必要があります。詳細については、[Wovn API](./wovn_apis.md#initwovn)をご参照ください。
 
 ```javascript
 import * as Wovn from '@wovnio/react-native';
 
-// Example initialization
+// 初期化の例
 await Wovn.initWovn('Token3', {
   enabledDebugLog: true,
   logLevel: 0,
 });
 ```
 
-### 4. Translate Unsupported Components
+### 4. サポートされていないコンポーネントの翻訳
 
-To translate components not directly supported by Wovn, use `Wovn.translate` or `Wovn.translateText`. Note that the results of these functions do not dynamically change when the language changes. (`WovnView` components will be introduced soon for dynamic updates.)
+Wovnが直接サポートしていないコンポーネントを翻訳するには、`Wovn.translate`または`Wovn.translateText`を使用します。これらの関数の結果は、言語が変更されても動的に変化しません。(`WovnView`コンポーネントは近いうちに動的更新に対応予定です。)
 
 ```javascript
 import { Alert } from 'react-native';
 import * as Wovn from '@wovnio/react-native';
 
-// Example usage
+// 使用例
 Alert.alert(
   Wovn.translateText('アラート'),
   Wovn.translateText('ボタンが押されました！')
 );
 ```
 
-### 5. Automatic Translation Data Handling
+### 5. 自動翻訳データの処理
 
-The v2 SDK automatically handles translation data, so you no longer need to use functions like `loadTranslation`.
+v2 SDKは翻訳データを自動的に処理するため、`loadTranslation`のような関数を使用する必要がなくなりました。
 
-### 6. (Optional) Handle System Language
+### 6. （オプション）システム言語の処理
 
-We recommend letting Wovn manage language settings using `Wovn.changeToSystemLang()`. For more details, refer to [Wovn APIs](./wovn_apis.md#changeToSystemLang). Wovn will automatically detect and apply the system language.
+`Wovn.changeToSystemLang()`を使用して、Wovnに言語設定を管理させることをお勧めします。詳細については、[Wovn API](./wovn_apis.md#changetosystemlang)をご参照ください。Wovnはシステム言語を自動的に検出し適用します。
 
 ```javascript
 import * as Wovn from '@wovnio/react-native';
 
-// Initialize Wovn first
+// まずWovnを初期化
 await Wovn.initWovn('Token3', {
   enabledDebugLog: true,
   logLevel: 0,
 });
 
-// Change to system language
+// システム言語に変更
 Wovn.changeToSystemLang();
 ```
 
-## V2 Improvements
+## v2の改善点
 
-1. **Performance**: The v2 SDK is significantly faster and more efficient in translating text compared to v1.
-2. **More Supported Components**: The v2 SDK supports components such as `Text`, `Button`, and `TextInput`. More components will be added in future updates.
-3. **Simpler APIs**: The v2 SDK introduces a simpler and more user-friendly API design.
-4. **Developer-Friendly Features**: Enhanced features for developers (When `__DEV__ === true`):
-    - Faster reporting and refreshing of translation data.
-    - Preview mode to test saved translations before publishing them.
-    - Automatic debugging aids in development mode .
+1. **パフォーマンス**: v2 SDKは、v1と比較してテキスト翻訳が大幅に高速かつ効率的です。
+2. **対応コンポーネントの増加**: v2 SDKは、`Text`、`Button`、`TextInput`などのコンポーネントをサポートしています。今後さらに多くのコンポーネントが追加される予定です。
+3. **簡素なAPI**: v2 SDKは、よりシンプルで使いやすいAPIデザインを導入しています。
+4. **開発者向けの機能強化**: 開発者向け機能が強化されています（`__DEV__ === true`の場合）:
+    - 翻訳データの迅速な報告と更新。
+    - 翻訳を公開する前に保存済みの翻訳をテストできるプレビューモード。
+    - 開発モードでの自動デバッグ支援。

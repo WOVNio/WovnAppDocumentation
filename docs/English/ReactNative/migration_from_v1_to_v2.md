@@ -28,7 +28,7 @@ You no longer need to wrap your app inside `WovnContainer`.
 
 ### 3. Initialize Wovn
 
-Use the following example to initialize Wovn. Note that `Wovn.initWovn` must be completed before using other Wovn functions. For more details, refer to [Wovn APIs](./wovn_apis.md#initWovn).
+Use the following example to initialize Wovn. Note that `Wovn.initWovn` must be completed before using other Wovn functions. For more details, refer to [Wovn APIs](./wovn_apis.md#initwovn).
 
 ```javascript
 import * as Wovn from '@wovnio/react-native';
@@ -61,7 +61,7 @@ The v2 SDK automatically handles translation data, so you no longer need to use 
 
 ### 6. (Optional) Handle System Language
 
-We recommend letting Wovn manage language settings using `Wovn.changeToSystemLang()`. For more details, refer to [Wovn APIs](./wovn_apis.md#changeToSystemLang). Wovn will automatically detect and apply the system language.
+We recommend letting Wovn manage language settings using `Wovn.changeToSystemLang()`. For more details, refer to [Wovn APIs](./wovn_apis.md#changetosystemlang). Wovn will automatically detect and apply the system language.
 
 ```javascript
 import * as Wovn from '@wovnio/react-native';
