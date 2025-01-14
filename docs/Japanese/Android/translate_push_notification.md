@@ -181,7 +181,7 @@
 1. 通知の `title` や `body` に直接ユーザーデータを追加する代わりに、`%{variable_name}%` を使用し、データを通知の `data` 内に含めることができます。
 
     ```json
-    {   
+    {
         "to": "{YOUR TESTING DEVICE FCM TOKEN}",
         "notification": {
             "title": "今月の請求書の準備ができました, %name%さん!",
@@ -191,7 +191,7 @@
             "name": "John Doe",
             "amount": "10000",
             "date": "2023/12/12"
-        }  
+        }
     }
     ```
 

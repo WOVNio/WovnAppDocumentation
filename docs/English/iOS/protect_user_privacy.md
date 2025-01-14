@@ -15,14 +15,14 @@ To ensure that sensitive information is not reported to WOVN, the WOVN SDK offer
 1. Follow the instructions in the [WOVN Debug Mode](./debug_mode.md) document to enable Debug Mode.
 2. **Limit reporting to only app operator** is enabled by default. For changes to this behavior, please contact WOVN support.
 
-**Note:**  
+**Note:**
 This approach is highly recommended for its simplicity. It guarantees 100% user privacy while enabling other development and testing features.
 
 ## 2. Wovn.setWovnIgnore
 
 To exclude sensitive information from translation, you can add `targetView.wovn.ignore = true` . This allows you to specify which views should not be translated.
 
-**Note:**  
+**Note:**
 It is recommended to call `targetView.wovn.ignore = true` before the view is added to the screen, ideally before `viewDidLoad` method of the ViewController. This to ensure that the view is not translated when it is first displayed.
 
 ### Example
