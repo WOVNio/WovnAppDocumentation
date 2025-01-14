@@ -34,7 +34,7 @@
     ```swift
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // 一部のアプリケーションコード
-        
+
         // [変更前]
         // Wovn.start(isDebugMode: _isDebugAssertConfiguration(), autoTranslateUIKit: true)
 
@@ -70,7 +70,7 @@
                 contentHandler(translatedContent)
             }
         }
-        
+
         override func serviceExtensionTimeWillExpire() {
             // システムによって拡張機能が終了される直前に呼ばれます。
             // これを機会に「最善の試み」として修正されたコンテンツを配信します。そうしないと、元のプッシュペイロードが使用されます。
@@ -109,7 +109,7 @@
 1. 通知の `title` や `body` にユーザーデータを直接追加する代わりに、`%{variable_name}%` を使用し、通知データの `data` 内にデータを含めることができます。
 
     ```json
-    {   
+    {
         "to": "{YOUR TESTING DEVICE FCM TOKEN}",
         "notification": {
             "mutable_content": true, // この行を忘れずに
@@ -120,7 +120,7 @@
             "name": "John Doe",
             "amount": "10000",
             "date": "2023/12/12"
-        }  
+        }
     }
     ```
 

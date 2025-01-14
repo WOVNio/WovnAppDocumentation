@@ -181,7 +181,7 @@ In this document, you will learn:
 1. Instead of adding user data directly into the `title` or `body` of the notification, you can use `%{variable_name}%` instead, with its data inside data of the notification.
 
     ```json
-    {   
+    {
         "to": "{YOUR TESTING DEVICE FCM TOKEN}",
         "notification": {
             "title": "今月の請求書の準備ができました, %name%さん!",
@@ -191,7 +191,7 @@ In this document, you will learn:
             "name": "John Doe",
             "amount": "10000",
             "date": "2023/12/12"
-        }  
+        }
     }
     ```
 
@@ -201,7 +201,7 @@ In this document, you will learn:
 
 ## 4. How to use Wovn to translate local push notification
 
-You can use Wovn.translateNotificationData to translate local push notification data before displaying it. 
+You can use Wovn.translateNotificationData to translate local push notification data before displaying it.
 
 ```java
 Map<String, Object> data = new HashMap<>();

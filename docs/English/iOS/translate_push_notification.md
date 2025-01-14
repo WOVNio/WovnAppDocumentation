@@ -34,7 +34,7 @@ In this document, you will learn:
     ```swift
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Some application code
-        
+
         // [BEFORE]
         // Wovn.start(isDebugMode: _isDebugAssertConfiguration(), autoTranslateUIKit: true)
 
@@ -70,7 +70,7 @@ In this document, you will learn:
                 contentHandler(translatedContent)
             }
         }
-        
+
         override func serviceExtensionTimeWillExpire() {
             // Called just before the extension will be terminated by the system.
             // Use this as an opportunity to deliver your "best attempt" at modified content, otherwise the original push payload will be used.
@@ -110,7 +110,7 @@ In this document, you will learn:
 1. Instead of adding user data directly into the `title` or `body` of the notification, you can use `%{variable_name}%` instead, with its data inside data of the notification.
 
     ```json
-    {   
+    {
         "to": "{YOUR TESTING DEVICE FCM TOKEN}",
         "notification": {
             "mutable_content": true, // Don't forget this line
@@ -121,7 +121,7 @@ In this document, you will learn:
             "name": "John Doe",
             "amount": "10000",
             "date": "2023/12/12"
-        }  
+        }
     }
     ```
 
@@ -131,7 +131,7 @@ In this document, you will learn:
 
 ## 4. How to use Wovn to translate local push notification
 
-You can use `Wovn.translateNotificationData` to translate local push notification data before displaying it. 
+You can use `Wovn.translateNotificationData` to translate local push notification data before displaying it.
 
 ```swift
 var content = UNMutableNotificationContent()

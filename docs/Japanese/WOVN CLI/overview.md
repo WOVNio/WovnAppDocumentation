@@ -14,7 +14,7 @@
 2. **インストール**: 以下のコマンドを実行して、最新の `wovn_sdk` CLI をダウンロード・インストールできます。
 
     ```bash
-    gem uninstall wovn_sdk --all --executables --ignore-dependencies 
+    gem uninstall wovn_sdk --all --executables --ignore-dependencies
     curl -fSL -o wovn_sdk.gem "https://download.wovn.app/cli/latest/wovn_sdk.gem"
     gem install ./wovn_sdk.gem
     rm wovn_sdk.gem
