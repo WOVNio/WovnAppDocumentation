@@ -42,17 +42,24 @@ await Wovn.initWovn('Token3', {
 
 ### 4. サポートされていないコンポーネントの翻訳
 
-Wovnが直接サポートしていないコンポーネントを翻訳するには、`Wovn.translate`または`Wovn.translateText`を使用します。これらの関数の結果は、言語が変更されても動的に変化しません。(`WovnView`コンポーネントは近いうちに動的更新に対応予定です。)
+コンポーネントが Wovn に直接サポートされていない場合は、`Wovn.useTranslate` を使用してください。これらの関数の結果は、言語が変更されると動的に変更されます。
 
 ```javascript
-import { Alert } from 'react-native';
+import {
+  Text as RNText,
+  Button as RNButton,
+} from 'react-native';
 import * as Wovn from '@wovnio/react-native';
+import { Screen } from '@wovnio/react-native';
 
-// 使用例
-Alert.alert(
-  Wovn.translateText('アラート'),
-  Wovn.translateText('ボタンが押されました！')
-);
+// 一部のコード
+<Screen name="TextScreenReactNative">
+  <RNText>
+    {Wovn.useTranslate('こんにちは、世界')}
+  </RNText>
+
+  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+</Screen>
 ```
 
 ### 5. 自動翻訳データの処理
