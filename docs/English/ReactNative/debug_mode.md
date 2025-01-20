@@ -20,22 +20,23 @@ Enabling Debug Mode activates `App Operator Mode`, which includes the following 
 
 ## How to Enable Debug Mode
 
-Debug Mode can be activated either programmatically or via the WOVN Settings screen in your app.
+### 1. Automatic Activation in Development Environment
 
-### 1. Debug mode is automatically enabled in the development environment (`__DEV__ === true`)
+Debug Mode is automatically enabled in the development environment when the condition `__DEV__ === true` is met.
 
 ### 2. Enabling Debug Mode Programmatically
 
-When initializing WOVN, pass `true` to the `debugMode` parameter to enable `Debug Mode`.
-Note that debug mode SHOULD NEVER BE ENABLED for normal end-users. It might expose sensitive information to unauthorized users, or slow down the application due to the frequent data reporting.
+To enable Debug Mode programmatically, pass `true` to the `debugMode` parameter during WOVN initialization. **Do not enable Debug Mode for normal end-users** as it may expose sensitive information or slow down the application due to frequent data reporting.
+
+#### Example Code
 
 ```javascript
-// Using __DEV__ to enable debug mode in the development environment
+// Automatically enable debug mode in the development environment
 await Wovn.initWovn('EAuabD', {
     debugMode: __DEV__,
 });
 
-// Or you can use your own logic to enable debug mode.
+// Enable debug mode using custom logic
 await Wovn.initWovn('EAuabD', {
     debugMode: yourLogicToEnableDebugMode(),
 });
