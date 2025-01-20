@@ -1,58 +1,64 @@
-# WOVN デバッグモード機能 (自動翻訳)
+# WOVN iOS SDKのインストールと設定方法 (自動翻訳)
 
-WOVN の `Debug Mode` 機能は、`App Operator Mode` を有効にすることでアプリの開発とテストを効率化します。これにより、`Limit reporting to only app operator` と併用することでユーザープライバシーを保護しながら、レポートや翻訳の更新を迅速に行うことができます。
+WOVN iOS SDKを使用すると、iOSアプリに多言語サポートを簡単に追加できます。このガイドでは、iOSプロジェクトにWOVN iOS SDKをインストールおよび設定する方法を説明します。
 
-要約すると、`Debug Mode` は以下の用途において有用です：
+## ワンコマンドでのWOVN SDKのインストール
 
-- 開発およびテスト中のフィードバックを迅速化する。
-- 実際のエンドユーザーデータが WOVN に送信されるのを防ぎ、ユーザープライバシーを保護する。
+以下のコマンドを使用して、必要なすべての設定を含むWOVN iOS SDKをインストールできます。コマンドはプロジェクトに変更を加えるため、実行する前に変更をコミットしておいてください。
 
----
-
-## 機能概要
-
-デバッグモードを有効にすると、`App Operator Mode` がアクティブになり、以下の利点が得られます：
-
-1. **迅速なレポートと再翻訳**：
-   - アプリは約 `10 秒` ごとにデータをレポートし、コンテンツを再翻訳します。これにより、開発中のフィードバックが迅速に得られます。
-2. **ユーザープライバシーの保護**：
-   - `Limit reporting to only app operator` と組み合わせることで、デバッグモードはエンドユーザーデータが WOVN に送信されないようにします。
-
----
-
-## デバッグモードの有効化方法
-
-デバッグモードは、プログラム的にまたはアプリ内の WOVN 設定画面から有効にすることができます。
-
-### 1. プログラム的にデバッグモードを有効にする
-
-アプリのコード内で直接デバッグモードを有効にするには、以下の関数を使用します：
-
-```swift
-public static func start(appGroupIdentifier: String? = nil, isDebugMode: Bool = false, autoTranslateUIKit: Bool = true)
+```bash
+export WOVN_PROJECT_TOKEN=wovn_project_token
+export WOVN_API_KEY=wovn_api_key
+export IOS_PROJECT_PATH=absolute_path_to_ios_project
+export IOS_PROJECT_TARGETS=ios_project_target1,ios_project_target2 # オプション、デフォルトはプロジェクト名と同じ
+export WOVN_CLI_VERSION=latest # または特定のバージョン
+bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
 ```
 
-`isDebugMode` に `true` を渡して `Debug Mode` を有効にし、`App Operator Mode` に入ります。一般的な使用例としては、デバッグビルドのみで `Debug Mode` を有効にする場合に `_isDebugAssertConfiguration()` を使用します。
+### 例
 
-```swift
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Wovn.start(isDebugMode: _isDebugAssertConfiguration()) // デバッグビルドに基づいてデバッグモードを有効化
-    }
-}
+```bash
+export WOVN_PROJECT_TOKEN=WTOKEN
+export WOVN_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJwcm9qZWN0X3Rva2VuIjoiUjlFAKEvIiwidG9rZW5fdXVpZCI6IFAKETY3NTA1LWNjOWEtNDJiMS05N2YzLFAKEDA5YWIyYzJlZiJ9.BmeOFN78Qj-FAKETS16BVOFAKEwbqZgHZvYVxDjYriE
+export IOS_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/iOS/examples/wovn-ios-demoapp/wovn-ios-demoapp.xcodeproj
+export IOS_PROJECT_TARGETS=wovn-ios-demoapp,wovn-ios-demoappTests
+export WOVN_CLI_VERSION=latest
+bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
 ```
 
-この方法はシンプルですが、通常は開発（デバッグ）ビルドと本番（リリース）ビルドを別々に行う必要があります。
+```bash
+export WOVN_PROJECT_TOKEN=WTOKEN
+export WOVN_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJwcm9qZWN0X3Rva2VuIjoiUjlFAKEvIiwidG9rZW5fdXVpZCI6IFAKETY3NTA1LWNjOWEtNDJiMS05N2YzLFAKEDA5YWIyYzJlZiJ9.BmeOFN78Qj-FAKETS16BVOFAKEwbqZgHZvYVxDjYriE
+export IOS_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/iOS/examples/wovn-ios-demoapp/wovn-ios-demoapp.xcodeproj
+export WOVN_CLI_VERSION=latest
+bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
+```
 
-### 2. WOVN 設定画面からデバッグモードを有効にする
+## コマンドの内訳
 
-代わりに、アプリ内の WOVN 設定画面を通じてデバッグモードを有効にすることもできます。WOVN 設定画面を統合してアクセスする方法については、[setup_wovn_settings_in_app_info.md](./setup_wovn_settings_in_app_info.md) ドキュメントを参照してください。
+上記のコマンドは、以下のステップを実行します。
 
-WOVN 設定画面が設定されたら、以下の手順に従ってデバッグモードを有効にします：
+### ステップ1: WOVN CLIツールのダウンロードとインストール
 
-1. アプリの **App Info** 画面内の **Translation Settings** セクションに移動します。
-2. `Validation Token` フィールドに WOVN の `token` を入力します。
-3. **Debug Mode** スイッチをトグルして機能を有効にします。
-4. アプリはデバッグモードに入り、`App Operator Mode` が有効になり、翻訳の更新が迅速になり、レポート頻度が高くなります。
+```bash
+# 最新バージョンのWOVN CLIツールを確保
+gem uninstall wovn_sdk --all --executables --ignore-dependencies
+# gemをダウンロード
+curl -o wovn_sdk.gem https://download.wovn.app/cli/$WOVN_CLI_VERSION/wovn_sdk.gem
+# gemをインストール
+gem install ./wovn_sdk.gem
+```
 
-![WOVN 設定画面のデバッグモード](./assets/debug_mode_in_wovn_settings_screen.png)
+### ステップ2: **wovn_sdk**をWOVNプロジェクトトークンとAPIキーで設定
+
+このステップの後、以下の`wovn_sdk`コマンドでトークンとAPIキーを提供する必要はありません。
+
+```bash
+wovn_sdk config --token={WOVN_PROJECT_TOKEN} --api_key={WOVN_API_KEY}
+```
+
+### ステップ3: **wovn_sdk**を使用してWOVN iOS SDKをプロジェクトにインストール
+
+```bash
+wovn_sdk setup --platform=iOS --project_path={absolute_path_to_ios_project} --sdk_version=latest --with_kickstart --with_string_resources -y
+```
