@@ -27,6 +27,12 @@ import {
 </Screen>
 ```
 
+## Props
+
+| Prop Name | Type       | Default Value | Description                                                             |
+|-----------|------------|---------------|-------------------------------------------------------------------------|
+| `name`    | `string`   | `_Default`    | Specifies the name of the screen for translation and reporting purposes.|
+
 ## Notes
 
 - **Default Screen Name**: If the screen name cannot be retrieved from the `Screen` component, the default screen name `_Default` will be used.
