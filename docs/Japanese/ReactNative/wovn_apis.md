@@ -228,6 +228,46 @@ console.log(systemLang); // 'en-US'
 
 ## 翻訳
 
+### `useTranslate`
+
+**説明**
+
+現在の言語設定に基づいて翻訳機能を提供するReactフックです。コンテキストから自動的に画面名を判断し、言語が変更されるたびに翻訳を更新します。
+
+**シグネチャ**
+
+```typescript
+useTranslate(srcNode: React.ReactNode): React.ReactNode
+```
+
+**パラメーター**
+
+- `srcNode` (`React.ReactNode`): 翻訳対象のReactノード。
+
+**戻り値**
+
+- `React.ReactNode`: 翻訳されたReactノード。翻訳が利用できない場合は、元のノードを返します。
+
+**例**
+
+```javascript
+import {
+  Text as RNText,
+  Button as RNButton,
+} from 'react-native';
+import * as Wovn from '@wovnio/react-native';
+import { Screen } from '@wovnio/react-native';
+
+// 使用例
+<Screen name="TextScreenReactNative">
+  <RNText>
+    {Wovn.useTranslate('こんにちは、世界')}
+  </RNText>
+
+  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+</Screen>
+```
+
 ### `translateText`
 
 **説明**

@@ -228,6 +228,46 @@ console.log(systemLang); // 'en-US'
 
 ## Translation
 
+### `useTranslate`
+
+**Description**
+
+A React hook that provides a translation function based on the current language settings. It automatically determines the screen name from the context and updates the translation whenever the language changes.
+
+**Signature**
+
+```typescript
+useTranslate(srcNode: React.ReactNode): React.ReactNode
+```
+
+**Parameters**
+
+- `srcNode` (`React.ReactNode`): The React node to be translated.
+
+**Returns**
+
+- `React.ReactNode`: The translated React node. If a translation is not available, it returns the original node.
+
+**Examples**
+
+```javascript
+import {
+  Text as RNText,
+  Button as RNButton,
+} from 'react-native';
+import * as Wovn from '@wovnio/react-native';
+import { Screen } from '@wovnio/react-native';
+
+// Example usage
+<Screen name="TextScreenReactNative">
+  <RNText>
+    {Wovn.useTranslate('こんにちは、世界')}
+  </RNText>
+
+  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+</Screen>
+```
+
 ### `translateText`
 
 **Description**
