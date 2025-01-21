@@ -1,15 +1,17 @@
-# Translate unsupported components
+# Translating Unsupported Components with WOVN SDK
 
-There are two ways WOVN SDK can translate components that are not directly supported by WOVN SDK. Both based on [Wovn.useTranslate](./wovn_apis#usetranslate) function:
+WOVN SDK provides two methods to translate components that are not directly supported. Both methods rely on the [`Wovn.useTranslate`](./wovn_apis#usetranslate) function:
 
-1. Use `Wovn.useTranslate` directly to translate texts in unsupported components. This is recommended for simple cases.
-2. Create a new component that wraps the unsupported component and uses `Wovn.useTranslate` to translate the text. This is recommemded if your application use alot of unsupported components.
+1. **Use `Wovn.useTranslate` directly**: Best suited for simple cases.
+2. **Create a new wrapper component**: Ideal when your application uses many unsupported components.
 
-## Use `Wovn.useTranslate` directly
+---
 
-Read [Wovn.useTranslate](./wovn_apis#usetranslate) for more information.
+## 1. Using `Wovn.useTranslate` Directly
 
-Example:
+For straightforward scenarios, you can directly use the `Wovn.useTranslate` function to translate texts in unsupported components.
+
+### Example
 
 ```javascript
 import {
@@ -25,15 +27,19 @@ import { Screen } from '@wovnio/react-native';
     {Wovn.useTranslate('こんにちは、世界')}
   </RNText>
 
-  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string} />
 </Screen>
 ```
 
-## Create a new component
+For more details, refer to the [`Wovn.useTranslate`](./wovn_apis#usetranslate) documentation.
 
-Create a new component that wraps the unsupported component and uses `Wovn.useTranslate` to translate the text. Then use the new component instead of the unsupported component.
+## 2. Creating a New Wrapper Component
 
-Example with `Text` component:
+When your application uses many unsupported components, you can create custom wrapper components that leverage `Wovn.useTranslate` for translation. Use these wrappers in place of the original components.
+
+### Example: Wrapping the `Text` Component
+
+Below is an example of how to create a wrapper component for the `Text` component:
 
 ```javascript
 import React, { forwardRef } from 'react';
@@ -56,7 +62,9 @@ const Text = forwardRef<OriginalText, Props>(({ children, ...rest }, ref) => {
 export { Text };
 ```
 
-Example with `Button` component:
+### Example: Wrapping the `Button` Component
+
+Similarly, you can create a wrapper component for the `Button` component:
 
 ```javascript
 import React, { forwardRef } from 'react';
