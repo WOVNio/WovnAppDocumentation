@@ -1,15 +1,14 @@
+# Wovn React Native SDK - はじめに (自動翻訳)
 
-# Wovn React Native SDK - Getting Started Guide
+Wovn React Native SDK は、React Native アプリに多言語対応を簡単に追加できるライブラリです。このガイドでは、Wovn React Native SDK を使い始めるための手順を説明します。
 
-Wovn React Native SDK is a library that allows you to easily add multilingual support to your React Native app. This guide walks you through the steps to get started with Wovn React Native SDK.
+## 1. SDK のアクセスについてサポートチームに連絡する
 
-## 1. Contact Support for SDK Access
+Wovn React Native SDK と Wovn API トークンを取得するには、サポートチームにお問い合わせください。
 
-Please contact our support team to obtain the Wovn React Native SDK and your Wovn API token.
+## 2. Wovn React Native SDK をインポートする
 
-## 2. Import the Wovn React Native SDK
-
-Add the Wovn React Native SDK to your project dependencies, then re-install the dependencies.
+Wovn React Native SDK をプロジェクトの依存関係に追加し、依存関係を再インストールします。
 
 ```json
 "dependencies": {
@@ -19,14 +18,14 @@ Add the Wovn React Native SDK to your project dependencies, then re-install the 
 }
 ```
 
-## 3. Initialize the Wovn React Native SDK
+## 3. Wovn React Native SDK を初期化する
 
-The [`Wovn.initWovn`](./wovn_apis#initwovn) method is an asynchronous function that initializes the SDK. It requires two arguments: your Wovn API token and an optional configuration object.
+[`Wovn.initWovn`](./wovn_apis#initwovn) メソッドは、非同期で SDK を初期化する関数です。Wovn API トークンとオプションの設定オブジェクトの2つの引数が必要です。
 
-> **Note:**  
-> Call this method before invoking any other Wovn SDK methods. Using `await` is recommended. Learn more about the [`Wovn.initWovn`](./wovn_apis#initwovn) method.
+> **注:**  
+> 他の Wovn SDK メソッドを呼び出す前に、このメソッドを呼び出してください。`await` を使用することをお勧めします。[`Wovn.initWovn`](./wovn_apis#initwovn) メソッドについて詳しくは、ドキュメントをご覧ください。
 
-### Example
+### サンプルコード
 
 ```javascript
 import React, { useState, useEffect } from 'react';
@@ -81,62 +80,62 @@ const styles = StyleSheet.create({
 registerRootComponent(App);
 ```
 
-## 4. Managing the Language
+## 4. 言語管理
 
-Wovn provides several methods for managing the app's language:
+Wovn では、アプリの言語を管理するためのいくつかのメソッドを提供しています。
 
-- **Change the language**: Use [`Wovn.changeLang`](./wovn_apis#changelang).
-- **Change to system language**: Use [`Wovn.changeToSystemLang`](./wovn_apis#changetosystemlang).
-- **Get the current language**: Use [`Wovn.getCurrentLang`](./wovn_apis#getcurrentlang).
-- **Get the list of available languages**: Use [`Wovn.getLanguagesList`](./wovn_apis#getlanguageslist).
+- **言語を変更する**: [`Wovn.changeLang`](./wovn_apis#changelang) を使用
+- **システム言語に変更する**: [`Wovn.changeToSystemLang`](./wovn_apis#changetosystemlang) を使用
+- **現在の言語を取得する**: [`Wovn.getCurrentLang`](./wovn_apis#getcurrentlang) を使用
+- **利用可能な言語リストを取得する**: [`Wovn.getLanguagesList`](./wovn_apis#getlanguageslist) を使用
 
-We recommend letting Wovn manage the language settings with `Wovn.changeToSystemLang()`. For more details, refer to the [Wovn APIs](./wovn_apis.md#changetosystemlang).
+`Wovn.changeToSystemLang()` を使用して Wovn に言語設定を管理させることをお勧めします。詳細については [Wovn APIs](./wovn_apis.md#changetosystemlang) をご覧ください。
 
-### Example
+### サンプルコード
 
 ```javascript
 import * as Wovn from '@wovnio/react-native';
 
-// Initialize Wovn
+// Wovn を初期化
 await Wovn.initWovn('YOUR_API_TOKEN', {
   enabledDebugLog: true,
   logLevel: 0,
 });
 
-// Change to system language
+// システム言語に変更
 Wovn.changeToSystemLang();
 ```
 
-## 5. Translating Supported Components
+## 5. 対応コンポーネントの翻訳
 
-To translate supported components, import them from `@wovnio/react-native` instead of `react-native`.
+対応コンポーネントを翻訳するには、`react-native` ではなく `@wovnio/react-native` からインポートしてください。
 
-### Before
+### 変更前
 
 ```javascript
 import { Button, View, Text, TextInput } from 'react-native';
 ```
 
-### After
+### 変更後
 
 ```javascript
 import { View } from 'react-native';
 import { Button, View, Text, TextInput } from '@wovnio/react-native';
 ```
 
-## 6. Translating Unsupported Components
+## 6. 非対応コンポーネントの翻訳
 
-Refer to the [Translate Unsupported Components](./translate_unsupported_components.md) documentation for guidance on translating unsupported components.
+非対応コンポーネントの翻訳に関するガイドは、[Translate Unsupported Components](./translate_unsupported_components.md) を参照してください。
 
-## 7. Understanding Wovn's Screen Management
+## 7. Wovn の画面管理について
 
-Learn how Wovn controls the screen by referring to the [Screen Component](./screen_component.md) documentation.
+Wovn が画面を管理する方法については、[Screen Component](./screen_component.md) ドキュメントを参照してください。
 
-## 8. Protecting User Privacy
+## 8. ユーザープライバシーの保護
 
-To understand how to protect your users' privacy, read the [Protect User Privacy](./protect_user_privacy.md) documentation.
+ユーザーのプライバシーを保護する方法については、[Protect User Privacy](./protect_user_privacy.md) をご覧ください。
 
-## 9. Additional Resources
+## 9. 追加リソース
 
-- To enable quick reporting and refreshing of translation when developing, refer to the [Wovn Debug Mode](./debug_mode.md) documentation.
-- To migrate from the WOVN React Native v1 SDK to the Wovn React Native SDK v2, refer to the [Migration Guide](./migration_from_v1_to_v2.md).
+- 開発時に翻訳の迅速なレポートとリフレッシュを有効にするには、[Wovn Debug Mode](./debug_mode.md) ドキュメントを参照してください。
+- WOVN React Native v1 SDK から Wovn React Native SDK v2 への移行については、[Migration Guide](./migration_from_v1_to_v2.md) をご覧ください。

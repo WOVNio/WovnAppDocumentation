@@ -1,141 +1,84 @@
-# Wovn React Native SDK - はじめに (自動翻訳)
+# 未対応コンポーネントの翻訳方法 (自動翻訳)
 
-Wovn React Native SDK は、React Native アプリに多言語対応を簡単に追加できるライブラリです。このガイドでは、Wovn React Native SDK を使い始めるための手順を説明します。
+WOVN SDK は、直接サポートされていないコンポーネントを翻訳するための2つの方法を提供しています。いずれの方法も [`Wovn.useTranslate`](./wovn_apis#usetranslate) 関数を利用します：
 
-## 1. SDK のアクセスについてサポートチームに連絡する
+1. **`Wovn.useTranslate` を直接使用**: シンプルなケースに最適です。  
+2. **新しいラッパーコンポーネントを作成**: 多数の未対応コンポーネントを使用している場合に最適です。
 
-Wovn React Native SDK と Wovn API トークンを取得するには、サポートチームにお問い合わせください。
+## 1. `Wovn.useTranslate` を直接使用
 
-## 2. Wovn React Native SDK をインポートする
+簡単なシナリオでは、未対応コンポーネント内のテキストを翻訳するために、`Wovn.useTranslate` 関数を直接使用できます。
 
-Wovn React Native SDK をプロジェクトの依存関係に追加し、依存関係を再インストールします。
-
-```json
-"dependencies": {
-  // ...
-  "@wovnio/react-native": "file:path/to/wovn-react-native.tgz",
-  // ...
-}
-```
-
-## 3. Wovn React Native SDK を初期化する
-
-[`Wovn.initWovn`](./wovn_apis#initwovn) メソッドは、非同期で SDK を初期化する関数です。Wovn API トークンとオプションの設定オブジェクトの2つの引数が必要です。
-
-> **注:**  
-> 他の Wovn SDK メソッドを呼び出す前に、このメソッドを呼び出してください。`await` を使用することをお勧めします。[`Wovn.initWovn`](./wovn_apis#initwovn) メソッドについて詳しくは、ドキュメントをご覧ください。
-
-### サンプルコード
+### 例
 
 ```javascript
-import React, { useState, useEffect } from 'react';
-import 'expo-router/entry';
-import { registerRootComponent } from 'expo';
-import { ExpoRoot } from 'expo-router';
+import {
+  Text as RNText,
+  Button as RNButton,
+} from 'react-native';
 import * as Wovn from '@wovnio/react-native';
-import { Text, ActivityIndicator, View, StyleSheet } from 'react-native';
+import { Screen } from '@wovnio/react-native';
 
-async function initializeApp() {
-  try {
-    await Wovn.initWovn('YOUR_API_TOKEN', {
-      enabledDebugLog: true,
-      logLevel: 0,
-    });
-  } catch (error) {
-    console.error('Initialization failed:', error);
-  }
-}
+// 使用例
+<Screen name="TextScreenReactNative">
+  <RNText>
+    {Wovn.useTranslate('こんにちは、世界')}
+  </RNText>
 
-function App() {
-  const [isInitialized, setIsInitialized] = useState(false);
-
-  useEffect(() => {
-    async function init() {
-      await initializeApp();
-      setIsInitialized(true);
-    }
-    init();
-  }, []);
-
-  if (!isInitialized) {
-    return (
-      <View style={styles.centeredView}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text>LOADING...</Text>
-      </View>
-    );
-  }
-
-  return <ExpoRoot context={require.context('./app')} />;
-}
-
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
-registerRootComponent(App);
+  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string} />
+</Screen>
 ```
 
-## 4. 言語管理
+詳細については、[`Wovn.useTranslate`](./wovn_apis#usetranslate) ドキュメントを参照してください。
 
-Wovn では、アプリの言語を管理するためのいくつかのメソッドを提供しています。
+## 2. 新しいラッパーコンポーネントを作成
 
-- **言語を変更する**: [`Wovn.changeLang`](./wovn_apis#changelang) を使用
-- **システム言語に変更する**: [`Wovn.changeToSystemLang`](./wovn_apis#changetosystemlang) を使用
-- **現在の言語を取得する**: [`Wovn.getCurrentLang`](./wovn_apis#getcurrentlang) を使用
-- **利用可能な言語リストを取得する**: [`Wovn.getLanguagesList`](./wovn_apis#getlanguageslist) を使用
+多数の未対応コンポーネントを使用する場合は、`Wovn.useTranslate` を利用して翻訳を行うカスタムラッパーコンポーネントを作成できます。これらのラッパーを元のコンポーネントの代わりに使用してください。
 
-`Wovn.changeToSystemLang()` を使用して Wovn に言語設定を管理させることをお勧めします。詳細については [Wovn APIs](./wovn_apis.md#changetosystemlang) をご覧ください。
+### 例: `Text` コンポーネントのラップ
 
-### サンプルコード
+以下は、`Text` コンポーネント用のラッパーコンポーネントを作成する例です。
 
 ```javascript
+import React, { forwardRef } from 'react';
+import { Text as OriginalText, type TextProps } from 'react-native';
 import * as Wovn from '@wovnio/react-native';
 
-// Wovn を初期化
-await Wovn.initWovn('YOUR_API_TOKEN', {
-  enabledDebugLog: true,
-  logLevel: 0,
+type Props = TextProps & {
+  ref?: React.Ref<OriginalText>; // ref の正しい型を指定
+};
+
+// forwardRef を使用して ref の型を正確に指定
+const Text = forwardRef<OriginalText, Props>(({ children, ...rest }, ref) => {
+  return (
+    <OriginalText ref={ref} {...rest}>
+      {Wovn.useTranslate(children)}
+    </OriginalText>
+  );
 });
 
-// システム言語に変更
-Wovn.changeToSystemLang();
+export { Text };
 ```
 
-## 5. 対応コンポーネントの翻訳
+### 例: `Button` コンポーネントのラップ
 
-対応コンポーネントを翻訳するには、`react-native` ではなく `@wovnio/react-native` からインポートしてください。
-
-### 変更前
+同様に、`Button` コンポーネント用のラッパーコンポーネントを作成できます。
 
 ```javascript
-import { Button, View, Text, TextInput } from 'react-native';
+import React, { forwardRef } from 'react';
+import { Button as OriginalButton, type ButtonProps } from 'react-native';
+import * as Wovn from '@wovnio/react-native';
+
+type Props = ButtonProps & {
+  ref?: React.Ref<OriginalButton>; // ref の正しい型を指定
+};
+
+// forwardRef を使用して ref の型を正確に指定
+const Button = forwardRef<OriginalButton, Props>(({ title, ...rest }, ref) => {
+  return (
+    <OriginalButton ref={ref} title={Wovn.useTranslate(title) as string} {...rest} />
+  );
+});
+
+export { Button };
 ```
-
-### 変更後
-
-```javascript
-import { View } from 'react-native';
-import { Button, View, Text, TextInput } from '@wovnio/react-native';
-```
-
-## 6. 非対応コンポーネントの翻訳
-
-非対応コンポーネントの翻訳に関するガイドは、[Translate Unsupported Components](./translate_unsupported_components.md) を参照してください。
-
-## 7. Wovn の画面管理について
-
-Wovn が画面を管理する方法については、[Screen Component](./screen_component.md) ドキュメントを参照してください。
-
-## 8. ユーザープライバシーの保護
-
-ユーザーのプライバシーを保護する方法については、[Protect User Privacy](./protect_user_privacy.md) をご覧ください。
-
-## 9. 追加リソース
-
-- 開発時に翻訳の迅速なレポートとリフレッシュを有効にするには、[Wovn Debug Mode](./debug_mode.md) ドキュメントを参照してください。
-- WOVN React Native v1 SDK から Wovn React Native SDK v2 への移行については、[Migration Guide](./migration_from_v1_to_v2.md) をご覧ください。
