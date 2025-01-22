@@ -40,9 +40,11 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/react_native.svg').default,
     description: (
       <>
-        Documentation for React Native & Expo will be available soon.
+        Start using WOVN.app on React Native & Expo with our start guide. <br />
+        <a href="docs/English/ReactNative/using_wovn_react_native_sdk">React Native Start</a>
         <hr />
-        React Native & Expoのドキュメントは近日公開予定です。
+        React Native & ExpoでWOVN.appを始めるには、こちらのガイドをご利用ください。<br />
+        <a href="docs/Japanese/ReactNative/using_wovn_react_native_sdk">React Native スタート</a>
       </>
     ),
   },
