@@ -120,7 +120,7 @@ import { Button, View, Text, TextInput } from 'react-native';
 
 ```javascript
 import { View } from 'react-native';
-import { Button, View, Text, TextInput } from '@wovnio/react-native';
+import { Button, Text, TextInput } from '@wovnio/react-native';
 ```
 
 ## 6. 非対応コンポーネントの翻訳
