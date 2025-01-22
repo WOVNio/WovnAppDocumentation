@@ -19,16 +19,18 @@ To enable the Preview Translation feature, follow these steps:
 1. **Enable Debug Mode for Test Devices**  
    Refer to the [Debug Mode Documentation](./debug_mode.md) for instructions on enabling debug mode on test devices.
 
-2. **Update the `wovn.properties` File**  
-   Add `translation_preview_mode=true` to the `wovn.properties` file:
+2. **Update the `WOVNswift.plist` File**  
+   Add `translation_preview_mode=true` to the `WOVNswift.plist` file:
 
-   ```properties
-   token=YOUR_WOVN_PROJECT_TOKEN
-   translation_preview_mode=true
+   ```xml
+   <key>token</key>
+   <string>YOUR_WOVN_PROJECT_TOKEN</string>
+   <key>translation_preview_mode</key>
+   <true/>
    ```
 
 3. **Save and Restart the App**  
-   Save the changes to the `wovn.properties` file and restart the app.
+   Save the changes to the `WOVNswift.plist` file and restart the app.
 
 ### Result
 
