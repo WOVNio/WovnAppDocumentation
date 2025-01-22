@@ -11,10 +11,10 @@ const config: Config = {
   favicon: 'img/logo.png',
 
   // Set the production url of your site here
-  url: 'https://github.com',
+  url: 'https://wovnio.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/WovnAppDocumentation', 
+  baseUrl: '/WovnAppDocumentation/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -54,6 +54,12 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
         },
         theme: {
           customCss: './src/css/custom.css',
