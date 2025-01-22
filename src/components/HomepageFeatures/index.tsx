@@ -62,9 +62,11 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/xamarin.svg').default,
     description: (
       <>
-        Documentation for Xamarin will be available soon.
+        Start using our WovnXamarin with our quick start guide. <br />
+        <a href="docs/English/Xamarin/xamarin_quick_start">Xamarin Quick Start</a>
         <hr />
-        Xamarinのドキュメントは近日公開予定です。
+        XamarinでWOVN.appを始めるには、こちらのクイックスタートガイドをご利用ください。<br />
+        <a href="docs/Japanese/Xamarin/xamarin_quick_start">Xamarin クイックスタート</a>
       </>
     ),
   }

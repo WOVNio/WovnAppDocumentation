@@ -6,7 +6,7 @@ This document provides an overview of the public, non-deprecated methods availab
 
 ### `start(Context context, boolean isDebugMode)`
 
-Initializes the WOVN SDK with a given application context and debug mode flag.  
+Initializes the WOVN SDK with a given application context and debug mode flag.
 **Note:** Usually, WOVN can automatically get the application context. Use this method if it cannot.
 
 **Parameters:**
