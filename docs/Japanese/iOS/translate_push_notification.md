@@ -24,7 +24,7 @@
 ### 2. エンドユーザーに表示する前にサーバーからの通知データにアクセスし、翻訳するために WOVN に許可する方法
 
 1. サーバー側で、すべてのプッシュ通知に `"mutable_content": true` を追加してください。これがないと、Apple は通知をさらに編集する必要がないと判断し、通知をそのまま表示します。
-2. `UNNotificationServiceExtension` を拡張してカスタムロジックを追加していない場合は、Apple のドキュメント（https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension）に従って追加してください。
+2. `UNNotificationServiceExtension` を拡張してカスタムロジックを追加していない場合は、Apple のドキュメントに従って追加してください: https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension
 3. `UNNotificationServiceExtension` とアプリは別々のサンドボックスで実行されるため、データを共有するためのブリッジを作成する必要があります。これには App Groups を使用します：
     - メインアプリの `App Groups` に `group.io.wovn.workbox` を追加します。この例では `wovn-ios-demoapp` です。 ![プッシュ通知アプリグループ メインターゲット](./assets/push_notification_app_group_main_target.png)
     - Notification Service Extension の `App Groups` に `group.io.wovn.workbox` を追加します。 ![プッシュ通知アプリグループ Notification Service Extension](./assets/push_notification_app_group_pn_target.png)
