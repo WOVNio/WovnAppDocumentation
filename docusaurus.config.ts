@@ -105,6 +105,10 @@ const config: Config = {
               label: 'Android Quick Start',
               to: '/docs/English/Android/android_quick_start',
             },
+            {
+              label: 'React Native Start',
+              to: 'docs/English/ReactNative/using_wovn_react_native_sdk',
+            }
           ],
         },
         {
@@ -118,6 +122,10 @@ const config: Config = {
               label: 'Android クイックスタート',
               to: '/docs/Japanese/Android/android_quick_start',
             },
+            {
+              label: 'React Native スタート',
+              to: 'docs/Japanese/ReactNative/using_wovn_react_native_sdk',
+            }
           ],
         },
         {
