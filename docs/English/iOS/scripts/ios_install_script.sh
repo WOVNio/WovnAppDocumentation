@@ -2,17 +2,19 @@
 
 # Set default values
 WOVN_CLI_VERSION=${WOVN_CLI_VERSION:-"latest"}
+WOVN_SDK_VERSION=${WOVN_SDK_VERSION:-"latest"}
 IOS_PROJECT_TARGETS=${IOS_PROJECT_TARGETS:-""}
 
 # Check if WOVN_PROJECT_TOKEN, WOVN_API_KEY, IOS_PROJECT_PATH are set
 if [[ -z "$WOVN_PROJECT_TOKEN" || -z "$WOVN_API_KEY" || -z "$IOS_PROJECT_PATH" ]]; then
-  echo "Error: WOVN_PROJECT_TOKEN, WOVN_API_KEY, IOS_PROJECT_PATH, and optionally WOVN_CLI_VERSION must be set as environment variables."
+  echo "Error: WOVN_PROJECT_TOKEN, WOVN_API_KEY, IOS_PROJECT_PATH, and optionally WOVN_CLI_VERSION/WOVN_SDK_VERSION must be set as environment variables."
   echo "Example usage:"
   echo "  export WOVN_PROJECT_TOKEN=your_project_token_here"
   echo "  export WOVN_API_KEY=your_api_key_here"
   echo "  export IOS_PROJECT_PATH=/path/to/your/ios/project"
   echo "  export IOS_PROJECT_TARGETS=your_project_target1,your_project_target2 # Optional (default: empty)"
   echo "  export WOVN_CLI_VERSION=latest # Optional (default: latest)"
+  echo "  export WOVN_SDK_VERSION=latest # Optional (default: latest)"
   echo "  ./your_script_name.sh"
   exit 1
 fi
@@ -46,7 +48,7 @@ wovn_sdk setup \
   --platform=iOS \
   --project_path="$IOS_PROJECT_PATH" \
   --project_targets="$IOS_PROJECT_TARGETS" \
-  --sdk_version=latest \
+  --sdk_version="$WOVN_SDK_VERSION" \
   --with_kickstart \
   --with_string_resources \
   -y || { echo "Failed to install WOVN iOS SDK. Exiting."; exit 1; }

@@ -12,6 +12,7 @@ export WOVN_API_KEY=wovn_api_key
 export IOS_PROJECT_PATH=absolute_path_to_ios_project
 export IOS_PROJECT_TARGETS=ios_project_target1,ios_project_target2 # Optional, default is the same as project name
 export WOVN_CLI_VERSION=latest # or specific version
+export WOVN_SDK_VERSION=latest # or specific version like v3.5.0 or v3.6.0_rc1
 bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
 ```
 
@@ -23,6 +24,7 @@ export WOVN_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJwcm9qZWN0X3Rva2VuIjoiUjlFAKEvIiwidG9
 export IOS_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/iOS/examples/wovn-ios-demoapp/wovn-ios-demoapp.xcodeproj
 export IOS_PROJECT_TARGETS=wovn-ios-demoapp,wovn-ios-demoappTests
 export WOVN_CLI_VERSION=latest
+export WOVN_SDK_VERSION=latest
 bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
 ```
 
@@ -31,6 +33,7 @@ export WOVN_PROJECT_TOKEN=WTOKEN
 export WOVN_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJwcm9qZWN0X3Rva2VuIjoiUjlFAKEvIiwidG9rZW5fdXVpZCI6IFAKETY3NTA1LWNjOWEtNDJiMS05N2YzLFAKEDA5YWIyYzJlZiJ9.BmeOFN78Qj-FAKETS16BVOFAKEwbqZgHZvYVxDjYriE
 export IOS_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/iOS/examples/wovn-ios-demoapp/wovn-ios-demoapp.xcodeproj
 export WOVN_CLI_VERSION=latest
+export WOVN_SDK_VERSION=latest
 bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/iOS/scripts/ios_install_script.sh)
 ```
 
