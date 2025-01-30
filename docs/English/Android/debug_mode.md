@@ -56,8 +56,6 @@ Enable through the app interface after initial setup:
 
 *For setup details, see [WOVN Settings Integration Guide](./setup_wovn_settings_in_app_info.md).*
 
----
-
 ## Verification (From v3.5.0)
 
 Check activation status programmatically:
@@ -66,8 +64,3 @@ Check activation status programmatically:
 val debugStatus = Wovn.getDebugStatus()
 // Returns human-readable status including Debug Mode state
 ```
-
-**Expected Output Indicators:**
-
-- "Debug Mode: Active"
-- "App Operator Mode: Enabled"
