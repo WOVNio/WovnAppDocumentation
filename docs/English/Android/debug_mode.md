@@ -1,38 +1,33 @@
 # WOVN Debug Mode Feature
 
-The `Debug Mode` feature in WOVN streamlines app development and testing by enabling `App Operator Mode`. This allows for faster reporting and translation updates while ensuring user privacy when used with `Limit reporting to only app operator`.
+The **Debug Mode** feature in WOVN streamlines app development and testing by enabling **App Operator Mode**. This mode provides faster reporting/translation updates while ensuring user privacy when combined with the **Limit reporting to only app operator** setting.
 
-In summary, `Debug Mode` is a valuable tool for:
+## Key Benefits
 
-- Accelerating feedback during development and testing.
-- Protecting user privacy by preventing actual end-user data from being sent to WOVN.
-
----
+- **Accelerated Feedback Cycle**: Enables rapid reporting and re-translation during development (updates every ~10 seconds).
+- **Privacy Protection**: Prevents end-user data transmission to WOVN when used with privacy restrictions.
 
 ## Feature Overview
 
-Enabling Debug Mode activates `App Operator Mode`, which includes the following benefits:
+Enabling Debug Mode activates **App Operator Mode** with:
 
-1. **Faster Reporting and Re-Translation**: The app reports data and re-translates content approximately every `10 seconds`, enabling rapid feedback during development.
-2. **User Privacy Protection**: When paired with `Limit reporting to only app operator`, Debug Mode ensures that no end-user data is transmitted to WOVN.
+1. **Frequent Updates**  
+   Content re-translation and data reporting every 10 seconds for real-time feedback.
 
----
+2. **Privacy Safeguards**  
+   Restricts data reporting exclusively to app operators in debug environments.
 
-## How to Enable Debug Mode
+## Activation Methods
 
-Debug Mode can be activated either programmatically or via the WOVN Settings screen in your app.
+### Method 1: Programmatic Activation
 
-### 1. Enable Debug Mode Programmatically
-
-To activate Debug Mode through code, use the following function:
+Enable Debug Mode through code using the WOVN lifecycle callback constructor. Pass `true` to `isDebugMode` to enable `Debug Mode` and enter `App Operator Mode`. A common use case is enabling `Debug Mode` in debug builds only, using `BuildConfig.DEBUG`.
 
 ```java
 public WovnActivityLifecycleCallbacks(boolean isDebugMode)
 ```
 
-Pass `true` to `isDebugMode` to enable `Debug Mode` and enter `App Operator Mode`. A common use case is enabling `Debug Mode` in debug builds only, using `BuildConfig.DEBUG`.
-
-Example in Kotlin:
+**Example Implementation (Java):**
 
 ```java
 class MyApplication : Application() {
@@ -43,15 +38,36 @@ class MyApplication : Application() {
 }
 ```
 
-This method is straightforward but generally requires separate builds for development (debug) and production (release).
+> **BuildConfig.DEBUG Note**  
+> The Android build system automatically sets this flag to:
+>
+> - `true` in debug builds (development/testing)
+> - `false` in production releases  
+>
+> This ensures automatic environment separation without manual configuration.
 
-### 2. Enable Debug Mode via WOVN Settings Screen
+### Method 2: WOVN Settings Screen
 
-Alternatively, Debug Mode can be enabled through the WOVN Settings screen. For details on integrating this screen, refer to the [setup_wovn_settings_in_app_info.md](./setup_wovn_settings_in_app_info.md) document.
+Enable through the app interface after initial setup:
 
-Once the WOVN Settings screen is set up, follow these steps to enable Debug Mode:
+1. Navigate to **App Info → Translation Settings**
+2. Enter your WOVN token in **Validation Token**
+3. Toggle **Debug Mode** switch ON
 
-1. Navigate to the `Translation Settings` section within your app’s `App Info` screen.
-2. Enter your WOVN `token` into the `Validation Token` field.
-3. Toggle the `Debug Mode` switch to enable the feature.
-4. The app will now enter `Debug Mode`, activating `App Operator Mode` for faster translation updates and more frequent reporting.
+*For setup details, see [WOVN Settings Integration Guide](./setup_wovn_settings_in_app_info.md).*
+
+---
+
+## Verification (From v3.5.0)
+
+Check activation status programmatically:
+
+```kotlin
+val debugStatus = Wovn.getDebugStatus()
+// Returns human-readable status including Debug Mode state
+```
+
+**Expected Output Indicators:**
+
+- "Debug Mode: Active"
+- "App Operator Mode: Enabled"
