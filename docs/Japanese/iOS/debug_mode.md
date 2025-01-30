@@ -1,58 +1,90 @@
 # WOVN デバッグモード機能 (自動翻訳)
 
-WOVN の `Debug Mode` 機能は、`App Operator Mode` を有効にすることでアプリの開発とテストを効率化します。これにより、`Limit reporting to only app operator` と併用することでユーザープライバシーを保護しながら、レポートや翻訳の更新を迅速に行うことができます。
+WOVN の **デバッグモード** 機能は、**アプリオペレーターモード** を有効にすることで、アプリの開発とテストを効率化します。このモードは、**レポートをアプリオペレーターのみに制限** 設定と組み合わせることで、ユーザーのプライバシーを確保しつつ、より迅速なレポートおよび翻訳の更新を提供します。
 
-要約すると、`Debug Mode` は以下の用途において有用です：
+## 主な利点
 
-- 開発およびテスト中のフィードバックを迅速化する。
-- 実際のエンドユーザーデータが WOVN に送信されるのを防ぎ、ユーザープライバシーを保護する。
-
----
+- **フィードバックサイクルの加速**：開発中の迅速なレポートおよび再翻訳を可能にし（約10秒ごとに更新）。
+- **プライバシー保護**：プライバシー制限と併用することで、エンドユーザーのデータが WOVN に送信されるのを防止。
 
 ## 機能概要
 
-デバッグモードを有効にすると、`App Operator Mode` がアクティブになり、以下の利点が得られます：
+デバッグモードを有効にすると、**アプリオペレーターモード** が以下のようにアクティブになります：
 
-1. **迅速なレポートと再翻訳**：
-   - アプリは約 `10 秒` ごとにデータをレポートし、コンテンツを再翻訳します。これにより、開発中のフィードバックが迅速に得られます。
-2. **ユーザープライバシーの保護**：
-   - `Limit reporting to only app operator` と組み合わせることで、デバッグモードはエンドユーザーデータが WOVN に送信されないようにします。
+1. **頻繁な更新**  
+   リアルタイムフィードバックのため、コンテンツの再翻訳とデータのレポートが10秒ごとに行われます。
 
----
+2. **プライバシーの保護**  
+   デバッグ環境において、データのレポートをアプリオペレーターのみに限定します。
 
-## デバッグモードの有効化方法
+## 有効化方法
 
-デバッグモードは、プログラム的にまたはアプリ内の WOVN 設定画面から有効にすることができます。
+### 方法 1：プログラムによる有効化
 
-### 1. プログラム的にデバッグモードを有効にする
+`start` メソッドを使用してコード内でデバッグモードを有効にします。`isDebugMode` に `true` を渡すことで **デバッグモード** を有効にします。一般的な方法は以下の通りです：
 
-アプリのコード内で直接デバッグモードを有効にするには、以下の関数を使用します：
+**オプション A：ビルド構成チェック `_isDebugAssertConfiguration()` を使用**
 
 ```swift
-public static func start(appGroupIdentifier: String? = nil, isDebugMode: Bool = false, autoTranslateUIKit: Bool = true)
+Wovn.start(isDebugMode: _isDebugAssertConfiguration())
 ```
 
-`isDebugMode` に `true` を渡して `Debug Mode` を有効にし、`App Operator Mode` に入ります。一般的な使用例としては、デバッグビルドのみで `Debug Mode` を有効にする場合に `_isDebugAssertConfiguration()` を使用します。
+**実装例（Swift）：**
 
 ```swift
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Wovn.start(isDebugMode: _isDebugAssertConfiguration()) // デバッグビルドに基づいてデバッグモードを有効化
+        // ...
+        // 内部の構成チェックを使用
+        Wovn.start(isDebugMode: _isDebugAssertConfiguration())
+        // ...
     }
 }
 ```
 
-この方法はシンプルですが、通常は開発（デバッグ）ビルドと本番（リリース）ビルドを別々に行う必要があります。
+**オプション B：標準の `#if DEBUG` ディレクティブを使用**
 
-### 2. WOVN 設定画面からデバッグモードを有効にする
+```swift
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // ...
+        #if DEBUG
+            Wovn.start(isDebugMode: true)  // デバッグビルド
+        #else
+            Wovn.start(isDebugMode: false) // 本番ビルド
+        #endif
+        // ...
+    }
+}
+```
 
-代わりに、アプリ内の WOVN 設定画面を通じてデバッグモードを有効にすることもできます。WOVN 設定画面を統合してアクセスする方法については、[setup_wovn_settings_in_app_info.md](./setup_wovn_settings_in_app_info.md) ドキュメントを参照してください。
+> **ビルド構成に関する注意事項**
+>
+> 1. `_isDebugAssertConfiguration()` は内部的に Xcode の `DEBUG` フラグ構成をチェックします。
+> 2. `#if DEBUG` は標準的な Swift のプリプロセッサディレクティブであり、以下の通りです：  
+>    - デバッグビルド（開発/テスト）では `true`  
+>    - 本番リリースでは `false`  
+>
+> 両方の方法は、手動の構成なしに環境を自動的に分離します。  
+> *デバッグスキーム用にターゲットのビルド設定で `DEBUG` フラグが設定されていることを確認してください。*
 
-WOVN 設定画面が設定されたら、以下の手順に従ってデバッグモードを有効にします：
+### 方法 2：WOVN 設定画面
 
-1. アプリの **App Info** 画面内の **Translation Settings** セクションに移動します。
-2. `Validation Token` フィールドに WOVN の `token` を入力します。
-3. **Debug Mode** スイッチをトグルして機能を有効にします。
-4. アプリはデバッグモードに入り、`App Operator Mode` が有効になり、翻訳の更新が迅速になり、レポート頻度が高くなります。
+初期設定後、アプリのインターフェースを通じて有効にします：
 
-![WOVN 設定画面のデバッグモード](./assets/debug_mode_in_wovn_settings_screen.png)
+1. **設定 → あなたのアプリケーション** に移動
+2. **バリデーショントークン** に WOVN トークンを入力
+3. **デバッグモード** スイッチを ON に切り替え
+
+*セットアップの詳細については、[WOVN 設定統合ガイド](./setup_wovn_settings_in_app_info.md) を参照してください。*
+
+![翻訳設定画面のデバッグモード](./assets/debug_mode_in_wovn_settings_screen.png)
+
+## 検証（v3.5.0 以降）
+
+プログラムによって有効化ステータスを確認します：
+
+```swift
+let debugStatus = Wovn.getDebugStatus()
+// デバッグモードの状態を含む人間が読みやすいステータスを返します
+```
