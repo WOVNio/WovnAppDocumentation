@@ -11,6 +11,7 @@ export WOVN_PROJECT_TOKEN=wovn_project_token
 export WOVN_API_KEY=wovn_api_key
 export ANDROID_PROJECT_PATH=absolute_path_to_android_project
 export WOVN_CLI_VERSION=latest # or specific version
+export WOVN_SDK_VERSION=latest # or specific version like v3.5.0 or v3.6.0_rc1
 bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/Android/scripts/android_install_script.sh)
 ```
 
@@ -21,6 +22,7 @@ export WOVN_PROJECT_TOKEN=WTOKEN
 export WOVN_API_KEY=eyJhbGciOiJIUzI1NiJ9.eyJwcm9qZWN0X3Rva2VuIjoiUjlFAKEvIiwidG9rZW5fdXVpZCI6IFAKETY3NTA1LWNjOWEtNDJiMS05N2YzLFAKEDA5YWIyYzJlZiJ9.BmeOFN78Qj-FAKETS16BVOFAKEwbqZgHZvYVxDjYriE
 export ANDROID_PROJECT_PATH=/Users/user/Documents/Projects/WovnAppRepos/Android/examples/wovn-android-demoapp
 export WOVN_CLI_VERSION=latest
+export WOVN_SDK_VERSION=latest
 bash <(curl -fsSL https://raw.githubusercontent.com/WOVNio/WovnAppDocumentation/main/docs/English/Android/scripts/android_install_script.sh)
 ```
 

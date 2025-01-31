@@ -29,8 +29,8 @@ To enable the Preview Translation feature, follow these steps:
    <true/>
    ```
 
-3. **Save and Restart the App**  
-   Save the changes to the `WOVNswift.plist` file and restart the app.
+3. **Remove and Reinstal the App**
+   Save the changes to the `WOVNswift.plist` file and reinstall the app.
 
 ### Result
 
