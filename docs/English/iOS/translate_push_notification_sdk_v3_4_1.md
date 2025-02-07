@@ -1,4 +1,4 @@
-# Wovn Push Notification Feature (v3.5.0 and upper)
+# Wovn Push Notification Feature (v3.4.1 and lower)
 
 This document assumes your app already can receive push notifications from Apple Push Notification service (APNs) or Firebase.
 
@@ -29,22 +29,18 @@ In this document, you will learn:
     - Add `group.io.wovn.workbox` to `App Groups` of your main app. wovn-ios-demoapp in this example. ![Push Notification App Group Main Target](./assets/push_notification_app_group_main_target.png)
     - Add `group.io.wovn.workbox` to `App Groups` of your Notification Service Extension. ![Push Notification App Group Notification Service Extension](./assets/push_notification_app_group_pn_target.png)
 4. Notify `Wovn SDK` in both the main app and UNNotificationServiceExtension about the App Groups `group.io.wovn.workbox`. Then translate push notifications.
-    - In AppDelegate.swift, change the `Wovn.start`'s code parameters of `appGroupIdentifier` to `"group.io.wovn.workbox"`, and `isNotificationServiceEnv` to `false`. Example: `Wovn.start(appGroupIdentifier: "group.io.wovn.workbox", isNotificationServiceEnv: false)`
+    - In AppDelegate.swift, before calling `Wovn.eventTypeReport`, add `Wovn.setAppGroupIdentifier("group.io.wovn.workbox")`
 
     ```swift
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Some application code
         
         // [BEFORE]
-        // Wovn.start(isDebugMode: _isDebugAssertConfiguration(), autoTranslateUIKit: true)
+        // Wovn.eventTypeReport(_isDebugAssertConfiguration())
 
         // [AFTER]
-        Wovn.start(
-            appGroupIdentifier: "group.io.wovn.workbox",
-            isDebugMode: _isDebugAssertConfiguration(),
-            autoTranslateUIKit: true,
-            isNotificationServiceEnv: false
-        )
+        Wovn.setAppGroupIdentifier("group.io.wovn.workbox")
+        Wovn.eventTypeReport(_isDebugAssertConfiguration())
         // Some wovn code
         // Some other application code
     }
@@ -62,7 +58,7 @@ In this document, you will learn:
         var bestAttemptContent: UNMutableNotificationContent?
 
         override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-            Wovn.start(appGroupIdentifier: "group.io.wovn.workbox", isNotificationServiceEnv: true)
+            Wovn.setAppGroupIdentifier("group.io.wovn.workbox", isMainApp: false)
             self.contentHandler = contentHandler
             bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
             if let bestAttemptContent = bestAttemptContent {
