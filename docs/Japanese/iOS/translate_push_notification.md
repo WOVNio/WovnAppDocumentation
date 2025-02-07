@@ -1,4 +1,4 @@
-# WOVN プッシュ通知機能 (自動翻訳)
+# WOVN プッシュ通知機能 (v3.5.0 以上) (自動翻訳)
 
 このドキュメントは、アプリがすでに Apple Push Notification service (APNs) または Firebase からプッシュ通知を受信できることを前提としています。
 
