@@ -258,14 +258,44 @@ import {
 import * as Wovn from '@wovnio/react-native';
 import { Screen } from '@wovnio/react-native';
 
-// Example usage
-<Screen name="TextScreenReactNative">
-  <RNText>
-    {Wovn.useTranslate('こんにちは、世界')}
-  </RNText>
+// Usage
+const CustomComponent = () => {
+  return (
+    <>
+      <RNText>{Wovn.useTranslate('こんにちは、世界')}</RNText>
+      <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+    </>
+  );
+};
 
-  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+<Screen name="TextScreenReactNative">
+  <CustomComponent />
 </Screen>
+```
+
+> [!NOTE]  
+> Because `useTranslate` gets the screen name from the context, it will not affect if use `useTranslate` in the same return statement of the `Screen` component. It must use `useTranslate` in the child components of the `Screen` component.
+
+```javascript
+// In this case, 'こんにちは、世界' will be reported as be in the 'parentScreen' screen
+
+const ChildComponent = () => {
+  return (
+    <Screen name="childScreen">
+      <RNText>{Wovn.useTranslate('こんにちは、世界')}</RNText>
+    </Screen>
+  );
+};
+
+const ParentComponent = () => {
+  return (
+    <Screen name="parentScreen">
+      <ChildComponent />
+    </Screen>
+  );
+};
+
+<ParentComponent />
 ```
 
 ### `translateText`

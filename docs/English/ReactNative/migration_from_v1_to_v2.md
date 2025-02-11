@@ -52,15 +52,19 @@ import {
 import * as Wovn from '@wovnio/react-native';
 import { Screen } from '@wovnio/react-native';
 
-// Some code
-<Screen name="TextScreenReactNative">
-  <RNText>
-    {Wovn.useTranslate('こんにちは、世界')}
-  </RNText>
+// Usage
+const CustomComponent = () => {
+  return (
+    <>
+      <RNText>{Wovn.useTranslate('こんにちは、世界')}</RNText>
+      <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+    </>
+  );
+};
 
-  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+<Screen name="TextScreenReactNative">
+  <CustomComponent />
 </Screen>
-  
 ```
 
 ### 5. Automatic Translation Data Handling
