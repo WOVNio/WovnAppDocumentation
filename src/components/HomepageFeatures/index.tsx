@@ -69,6 +69,19 @@ const FeatureList: FeatureItem[] = [
         Xamarinのドキュメントは近日公開予定です。
       </>
     ),
+  },
+  {
+    title: 'Cordova',
+    Svg: require('@site/static/img/cordova.svg').default,
+    description: (
+      <>
+        Start using WOVN.app on Cordova with our quick start guide. <br />
+        <a href="docs/English/Cordova/cordova_quick_start">Cordova Quick Start</a>
+        <hr />
+        CordovaでWOVN.appを始めるには、こちらのクイックスタートガイドをご利用ください。<br />
+        <a href="docs/Japanese/Cordova/cordova_quick_start">Cordova クイックスタート</a>
+      </>
+    ),
   }
 
 ];
