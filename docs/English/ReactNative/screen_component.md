@@ -14,16 +14,22 @@ import {
   Button as RNButton,
 } from 'react-native';
 
+const CustomComponent = () => {
+  return (
+    <>
+      {/** Wovn.useTranslate will also automatically pick up the screen name from the Screen component */}
+      <RNText>{Wovn.useTranslate('こんにちは、世界')}</RNText>
+      <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+    </>
+  );
+};
+
 <Screen name="ScreenName">
     {/** WOVN's components will automatically pick up the screen name from the Screen component */}
     <Text>こんにちは、世界</Text>
     <Button title="こんにちは、世界！"/>
     
-    {/** Wovn.useTranslate will also automatically pick up the screen name from the Screen component */}
-    <RNText>
-        {Wovn.useTranslate('こんにちは、世界')}
-    </RNText>
-    <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+    <CustomComponent />
 </Screen>
 ```
 

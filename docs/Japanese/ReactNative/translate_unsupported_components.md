@@ -20,12 +20,17 @@ import * as Wovn from '@wovnio/react-native';
 import { Screen } from '@wovnio/react-native';
 
 // 使用例
-<Screen name="TextScreenReactNative">
-  <RNText>
-    {Wovn.useTranslate('こんにちは、世界')}
-  </RNText>
+const CustomComponent = () => {
+  return (
+    <>
+      <RNText>{Wovn.useTranslate('こんにちは、世界')}</RNText>
+      <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string}/>
+    </>
+  );
+};
 
-  <RNButton title={Wovn.useTranslate('こんにちは、世界!') as string} />
+<Screen name="TextScreenReactNative">
+  <CustomComponent />
 </Screen>
 ```
 
