@@ -12,7 +12,7 @@ v3 では、関数のパフォーマンスが向上し、その中の一つが `
 v2 では、`doSomethingAfterTranslationCompleted` を `completionHandler` の中で実行する必要がありました。
 ```swift
 Wovn.translateView(view: aView, viewController: aController, completionHandler: {
-     doSomethingAfterTranslationCompleted()
+    doSomethingAfterTranslationCompleted()
 })
 ```
 

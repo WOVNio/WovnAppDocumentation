@@ -11,7 +11,7 @@ From v3, we have improved the performance of our functions, and `Wovn.translateV
 In v2, `doSomethingAfterTranslationCompleted` needed to be inside the `completionHandler`.
 ```swift
 Wovn.translateView(view: aView, viewController: aController, completionHandler: {
-     doSomethingAfterTranslationCompleted()
+    doSomethingAfterTranslationCompleted()
 })
 ```
 
