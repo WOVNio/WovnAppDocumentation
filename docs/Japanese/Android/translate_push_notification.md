@@ -1,6 +1,6 @@
 # WOVN プッシュ通知機能 (自動翻訳)
 
-注意: このドキュメントは Firebase Cloud Messaging のみを対象としています。別のサービスを使用してプッシュ通知を送信する場合は、お問い合わせください。
+注意: このドキュメントは主に Firebase Cloud Messaging を対象としています。Fanship などの別のサービスを使用している場合は、以下の関連セクションを参照するか、お問い合わせください。
 
 このドキュメントでは、アプリケーションが既にプッシュ通知用に Firebase Cloud Messaging サービスに接続されていることを前提としています。まだ接続していない場合は、公式の [Google ドキュメント](https://firebase.google.com/docs/cloud-messaging/android/first-message) に従ってください。
 
@@ -12,6 +12,7 @@
 2. エンドユーザーに表示する前にサーバーからの通知データにアクセスし、翻訳するために WOVN を許可する方法
 3. 敏感なユーザー情報を含む通知データを翻訳するために WOVN を使用する方法
 4. ローカルプッシュ通知を翻訳するために WOVN を使用する方法
+5. プッシュ通知に Fanship と WOVN を統合する方法
 
 ## 詳細
 
@@ -212,3 +213,28 @@ String title = Wovn.translateNotificationData("こんにちは%name%さん。%am
 String body = Wovn.translateNotificationData("%amount%円を%duration%日以内にお支払いください", data);
 // ローカルプッシュ通知を表示するコード
 ```
+
+## 5. プッシュ通知にFanshipとWOVNを統合する方法
+
+Firebase Cloud Messagingの代わりにFanship をプッシュ通知サービスとして使用している場合は、翻訳データを傍受するためのステップを実装する必要があります。以下はWOVNとFanshipを統合する方法の例です：
+
+```kotlin
+class MyFirebaseMessagingService : FirebaseMessagingService() {
+    override fun onNewToken(newToken: String) {
+        super.onNewToken(newToken)
+        Log.d("MyFirebaseMessagingService", "FCM onNewToken: $newToken")
+        // FCMトークンの登録
+        Popinfo.setToken(this, newToken)
+    }
+
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        super.onMessageReceived(remoteMessage)
+        // Fanshipで処理する前にWovnでメッセージデータを翻訳
+        Wovn.translateFanshipRemoteMessageData(remoteMessage.data)
+        // FANSHIP FCMメッセージ設定
+        Popinfo.fcmMessageHandler(this, remoteMessage)
+    }
+}
+```
+
+実装にはWOVNとFanshipの両方に必要なインポートをすべて含めるようにしてください。重要なポイントは、Fanship のメッセージハンドラーに渡す前に、リモートメッセージデータを `Wovn.translateFanshipRemoteMessageData()` で呼び出すことです。

@@ -1,6 +1,6 @@
 # Wovn Push Notification Feature
 
-Note, this document is only applied to Firebase Could Messaging. If you use a different service to send push notifications, please get in touch with us.
+Note, this document is primarily applied to Firebase Could Messaging. If you use a different service to send push notifications, please see the relevant section below or get in touch with us.
 
 This document assumes your application is already connected to the Firebase Cloud Messaging service for push notifications. If not, please follow the official [Google document](https://firebase.google.com/docs/cloud-messaging/android/first-message).
 
@@ -12,6 +12,7 @@ In this document, you will learn:
 2. How to allow Wovn to access and then translate notification data from the server before showing it to the end user
 3. How to use Wovn to translate notification data containing sensitive user information
 4. How to use Wovn to translate local push notification
+5. How to integrate Wovn with Fanship for push notifications
 
 ## Detail
 
@@ -25,7 +26,7 @@ In this document, you will learn:
 
 ### 2. How to allow Wovn to access and then translate notification data from the server before showing it to the end user
 
-1. If you haven’t extended `FirebaseMessagingService` to add custom logic, please do so by following [this document](https://firebase.google.com/docs/cloud-messaging/android/receive)
+1. If you haven't extended `FirebaseMessagingService` to add custom logic, please do so by following [this document](https://firebase.google.com/docs/cloud-messaging/android/receive)
 2. Add the following code inside the `FirebaseMessagingService` extended class. Please do not forget to import Wovn and other necessary dependencies.
 
     ```java
@@ -181,7 +182,7 @@ In this document, you will learn:
 1. Instead of adding user data directly into the `title` or `body` of the notification, you can use `%{variable_name}%` instead, with its data inside data of the notification.
 
     ```json
-    {   
+    {
         "to": "{YOUR TESTING DEVICE FCM TOKEN}",
         "notification": {
             "title": "今月の請求書の準備ができました, %name%さん!",
@@ -191,7 +192,7 @@ In this document, you will learn:
             "name": "John Doe",
             "amount": "10000",
             "date": "2023/12/12"
-        }  
+        }
     }
     ```
 
@@ -201,7 +202,7 @@ In this document, you will learn:
 
 ## 4. How to use Wovn to translate local push notification
 
-You can use Wovn.translateNotificationData to translate local push notification data before displaying it. 
+You can use Wovn.translateNotificationData to translate local push notification data before displaying it.
 
 ```java
 Map<String, Object> data = new HashMap<>();
@@ -212,3 +213,30 @@ String title = Wovn.translateNotificationData("こんにちは%name%さん。%am
 String body = Wovn.translateNotificationData("%amount%円を%duration%日以内にお支払いください", data);
 // Display local push notification code
 ```
+
+## 5. How to integrate Wovn with Fanship for push notifications
+
+If you're using Fanship as your push notification service instead of Firebase Cloud Messaging directly, you'll need to implement a step to intercept the translation data. Below is an example of how to integrate Wovn with Fanship:
+
+```kotlin
+class MyFirebaseMessagingService : FirebaseMessagingService() {
+    override fun onNewToken(newToken: String) {
+        super.onNewToken(newToken)
+        Log.d("MyFirebaseMessagingService", "FCM onNewToken: $newToken")
+        // Register FCM token with Fanship
+        Popinfo.setToken(this, newToken)
+    }
+
+    override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        super.onMessageReceived(remoteMessage)
+        // Translate the message data with Wovn before handling it with Fanship
+        Wovn.translateFanshipRemoteMessageData(remoteMessage.data)
+        // Let Fanship handle the FCM message
+        Popinfo.fcmMessageHandler(this, remoteMessage)
+    }
+}
+```
+
+Make sure to include all necessary imports for both Wovn and Fanship in your implementation. The key part is to call `Wovn.translateFanshipRemoteMessageData()` with the remote message data before passing it to Fanship's message handler.
+
+Follow the same testing procedure as outlined in the previous sections to ensure your Fanship notifications are being properly translated by Wovn.
